@@ -11,6 +11,7 @@ import java.io.Serializable;
 public abstract class AbstractEntity implements Serializable {
     @Embedded
     @NotNull
+//    private UniqueId abstractEntityId;
     private UniqueId abstractEntityId;
 
     @Version
