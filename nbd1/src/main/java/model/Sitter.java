@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Sitter")
-public class Sitter {
+public class Sitter extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Sitter_ID")
@@ -33,7 +33,5 @@ public class Sitter {
     protected Sitter(){
 
     }
-
-
 
 }
