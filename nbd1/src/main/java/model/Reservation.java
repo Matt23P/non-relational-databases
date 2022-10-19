@@ -17,7 +17,7 @@ public class Reservation extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Reservation_ID")
-    private Long reservation_id;
+    private Long reservationId;
 
     @Column(name = "Date")
     private LocalDate date;
@@ -36,8 +36,7 @@ public class Reservation extends AbstractEntity {
     @JoinColumn(name = "Parent_ID")
     private Parent parent;
 
-    public Reservation(Long reservation_id, LocalDate date, LocalTime startHour, LocalTime endHour, Sitter sitter, Parent parent) {
-        this.reservation_id = reservation_id;
+    public Reservation(LocalDate date, LocalTime startHour, LocalTime endHour, Sitter sitter, Parent parent) {
         this.date = date;
         this.startHour = startHour;
         this.endHour = endHour;
