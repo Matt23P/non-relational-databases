@@ -24,8 +24,7 @@ public class Sitter extends AbstractEntity {
     @Column(name = "Base price")
     private double basePrice;
 
-    public Sitter(Long sitterId, String firstName, String lastName, double basePrice) {
-        this.sitterId = sitterId;
+    public Sitter(String firstName, String lastName, double basePrice) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.basePrice = basePrice;

@@ -24,8 +24,8 @@ public class Academic extends Sitter {
     @Column(name="Bonus")
     private double bonus;
 
-    public Academic(Long sitterId, String firstName, String lastName, double basePrice, String subject, int max_age, double bonus) {
-        super(sitterId, firstName, lastName, basePrice);
+    public Academic(String firstName, String lastName, double basePrice, String subject, int max_age, double bonus) {
+        super(firstName, lastName, basePrice);
         this.subject = subject;
         this.max_age = max_age;
         this.bonus = bonus;

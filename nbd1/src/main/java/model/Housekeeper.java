@@ -14,8 +14,8 @@ public class Housekeeper extends Sitter {
     @Column(name = "Skill")
     private String skill;
 
-    public Housekeeper(Long sitterId, String firstName, String lastName, double basePrice, String skill) {
-        super(sitterId, firstName, lastName, basePrice);
+    public Housekeeper(String firstName, String lastName, double basePrice, String skill) {
+        super(firstName, lastName, basePrice);
         this.skill = skill;
     }
 
