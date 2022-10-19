@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Housekeeper")
+@Access(AccessType.FIELD)
 public class Housekeeper extends Sitter {
 
     @Column(name = "Skill")

@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Child")
+@Access(AccessType.FIELD)
 public class Child extends Parent {
     @Column(name = "Child name")
     private String childName;
@@ -17,8 +16,8 @@ public class Child extends Parent {
     @Column(name = "Child age")
     private int childAge;
 
-    public Child(String name, String address, String phoneNumber, String childName, int childAge) {
-        super(name, address, phoneNumber);
+    public Child(String name, String address, Long parentId, String phoneNumber, String childName, int childAge) {
+        super(name, address, parentId, phoneNumber);
         this.childName = childName;
         this.childAge = childAge;
     }

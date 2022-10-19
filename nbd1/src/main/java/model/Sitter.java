@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Sitter")
+@Access(AccessType.FIELD)
 public class Sitter extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

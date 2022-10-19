@@ -1,9 +1,6 @@
 package model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +8,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="Parent")
-public class Parent {
+@Access(AccessType.FIELD)
+public class Parent extends AbstractEntity{
     @Column(name = "Name")
     private String name;
 
@@ -19,12 +17,17 @@ public class Parent {
     private String address;
 
     @Id
-    @Column(name = "Phone number")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Parent_ID")
+    private Long parentId;
+
+    @Column(name = "Phone Number")
     private String phoneNumber;
 
-    public Parent(String name, String address, String phoneNumber) {
+    public Parent(String name, String address, Long parentId, String phoneNumber) {
         this.name = name;
         this.address = address;
+        this.parentId = parentId;
         this.phoneNumber = phoneNumber;
     }
 

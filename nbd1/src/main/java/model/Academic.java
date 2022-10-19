@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name="Academic")
+@Access(AccessType.FIELD)
 public class Academic extends Sitter {
     @Column(name="Subject")
     private String subject;
