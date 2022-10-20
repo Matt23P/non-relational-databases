@@ -13,8 +13,8 @@ public class ParentTest {
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BABYSITTER");
     private static final ParentRepository parentRepository = new ParentRepository();
 
-    Parent parent = new Parent("Mateusz Przybyl", "Lodz Politechniki 1", 2137420L, "602783554");
-    Parent parent1 = new Parent("Macij Przybylski", "Lodz Nowa 15 ", 7137540L, "307783554");
+    Parent parent = new Parent("Mateusz Przybyl", "Lodz Politechniki 1", "602783554");
+    Parent parent1 = new Parent("Macij Przybylski", "Lodz Nowa 15 ", "307783554");
 
     @Test
     void parentAddTest(){
@@ -22,7 +22,7 @@ public class ParentTest {
 
         assertNotNull(parentRepository.add(parent));
         assertNull(parentRepository.add(parent));
-        assertNotNull(parentManager.add("Wojciech", "Stefaniak", 6999760L, "504728952"));
+        assertNotNull(parentManager.add("Wojciech", "Stefaniak", "504728952"));
 
     }
 

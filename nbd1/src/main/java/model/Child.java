@@ -16,8 +16,8 @@ public class Child extends Parent {
     @Column(name = "Child age")
     private int childAge;
 
-    public Child(String name, String address, Long parentId, String phoneNumber, String childName, int childAge) {
-        super(name, address, parentId, phoneNumber);
+    public Child(String name, String address, String phoneNumber, String childName, int childAge) {
+        super(name, address, phoneNumber);
         this.childName = childName;
         this.childAge = childAge;
     }

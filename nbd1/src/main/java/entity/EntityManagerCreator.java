@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class EntityManagerCreator {
-    private static final EntityManagerFactory manager = Persistence.createEntityManagerFactory("SITTER");
+    private static final EntityManagerFactory manager = Persistence.createEntityManagerFactory("BABYSITTER");
 
     public static EntityManager getEntityManager() {
         return manager.createEntityManager();
