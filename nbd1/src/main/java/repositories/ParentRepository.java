@@ -23,11 +23,15 @@ public class ParentRepository implements Repository<Parent, Long> {
     }
 
     @Override
-    public void remove(Parent object) {
+    public boolean remove(Parent object) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
+            return true;
+        }
+        catch (Exception e) {
+            return false;
         }
     }
 }

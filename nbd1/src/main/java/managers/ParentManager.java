@@ -15,5 +15,5 @@ public class ParentManager {
         return parentRepository.add(parent);
     }
     public Parent get(Long parentId){return parentRepository.get(parentId);}
-    public void remove(Parent parent){parentRepository.remove(parent);}
+    public boolean remove(Parent parent){return parentRepository.remove(parent);}
 }

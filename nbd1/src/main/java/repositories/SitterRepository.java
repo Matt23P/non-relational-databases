@@ -20,11 +20,15 @@ public class SitterRepository implements Repository<Sitter, Long> {
         }
     }
 
-    public void remove(Sitter object) {
+    public boolean remove(Sitter object) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
+            return true;
+        }
+        catch (Exception e){
+            return false;
         }
     }
 }

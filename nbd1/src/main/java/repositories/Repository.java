@@ -7,5 +7,5 @@ public interface Repository <T, id_T> {
     T add (T item);
     T get (id_T id);
 
-    void remove (T item);
+    boolean remove (T item);
 }

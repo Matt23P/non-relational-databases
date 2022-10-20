@@ -23,11 +23,15 @@ public class ReservationRepository implements Repository<Reservation, Long> {
     }
 
     @Override
-    public void remove(Reservation object) {
+    public boolean remove(Reservation object) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
+            return true;
+        }
+        catch (Exception e){
+            return false;
         }
     }
 }
