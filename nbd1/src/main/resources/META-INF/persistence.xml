@@ -11,11 +11,11 @@
       <property name="jakarta.persistence.jdbc.user" value="nbd" /> <!-- DB User -->
       <property name="jakarta.persistence.jdbc.password" value="nbdpassword" /> <!-- DB Password -->
 
-      <property name="hibernate.show_sql" value="false" /> <!-- Show SQL in console -->
+      <property name="hibernate.show_sql" value="true" /> <!-- Show SQL in console -->
       <property name="hibernate.format_sql" value="false" /> <!-- Show SQL formatted -->
 
-      <property name="javax.persistence.sql-load-script-source"
-                value="META-INF/sql/initial_data.sql" />
+<!--      <property name="javax.persistence.sql-load-script-source"-->
+<!--                value="META-INF/sql/initial_data.sql" />-->
 
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/> <!-- DB Dialect -->
       <property name="hibernate.hbm2ddl.auto" value="create-drop" /> <!-- create / create-drop / update -->

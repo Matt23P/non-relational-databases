@@ -4,6 +4,8 @@ import entity.EntityManagerCreator;
 import jakarta.persistence.EntityManager;
 import model.Reservation;
 
+import static model.Reservation_.reservationId;
+
 public class ReservationRepository implements Repository<Reservation, Long> {
     @Override
     public Reservation add(Reservation object) {
@@ -18,7 +20,7 @@ public class ReservationRepository implements Repository<Reservation, Long> {
     @Override
     public Reservation get(Long id) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
-            return manager.find(Reservation.class, id);
+            return manager.find(Reservation.class, reservationId);
         }
     }
 

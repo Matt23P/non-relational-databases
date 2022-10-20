@@ -4,6 +4,8 @@ import entity.EntityManagerCreator;
 import jakarta.persistence.EntityManager;
 import model.Parent;
 
+import static model.Parent_.parentId;
+
 public class ParentRepository implements Repository<Parent, Long> {
     @Override
     public Parent add(Parent object) {
@@ -18,7 +20,7 @@ public class ParentRepository implements Repository<Parent, Long> {
     @Override
     public Parent get(Long id) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
-            return manager.find(Parent.class, id);
+            return manager.find(Parent.class, parentId);
         }
     }
 
