@@ -22,10 +22,10 @@ public class Reservation extends AbstractEntity {
     @Column(name = "Date")
     private LocalDate date;
 
-    @Column(name = "Start hour")
+    @Column(name = "Start_hour")
     private LocalTime startHour;
 
-    @Column(name = "End hour")
+    @Column(name = "End_hour")
     private LocalTime endHour;
 
     @ManyToOne

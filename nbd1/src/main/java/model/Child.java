@@ -10,10 +10,10 @@ import lombok.Setter;
 @Table(name="Child")
 @Access(AccessType.FIELD)
 public class Child extends Parent {
-    @Column(name = "Child name")
+    @Column(name = "Child_name")
     private String childName;
 
-    @Column(name = "Child age")
+    @Column(name = "Child_age")
     private int childAge;
 
     public Child(String name, String address, String phoneNumber, String childName, int childAge) {

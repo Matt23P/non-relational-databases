@@ -15,13 +15,13 @@ public class Sitter extends AbstractEntity {
     @Column(name="Sitter_ID")
     private Long sitterId;
 
-    @Column(name="First name")
+    @Column(name="First_name")
     private String firstName;
 
-    @Column(name="Last name")
+    @Column(name="Last_name")
     private String lastName;
 
-    @Column(name = "Base price")
+    @Column(name = "Base_price")
     private double basePrice;
 
     public Sitter(String firstName, String lastName, double basePrice) {

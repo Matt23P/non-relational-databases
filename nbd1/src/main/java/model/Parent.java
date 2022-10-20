@@ -21,7 +21,7 @@ public class Parent extends AbstractEntity{
     @Column(name = "Parent_ID")
     private Long parentId;
 
-    @Column(name = "Phone Number")
+    @Column(name = "Phone_Number")
     private String phoneNumber;
 
     public Parent(String name, String address, String phoneNumber) {

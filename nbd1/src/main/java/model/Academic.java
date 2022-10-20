@@ -18,7 +18,7 @@ public class Academic extends Sitter {
     @Column(name="Subject")
     private String subject;
 
-    @Column(name="maxAge")
+    @Column(name="Max_age")
     private int max_age;
 
     @Column(name="Bonus")
