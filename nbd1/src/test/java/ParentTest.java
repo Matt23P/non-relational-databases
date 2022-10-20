@@ -21,7 +21,8 @@ public class ParentTest {
         ParentManager parentManager = new ParentManager(parentRepository);
 
         assertNotNull(parentRepository.add(parent));
-        assertNull(parentRepository.add(parent));
+        assertNull(parentRepository.add(parent));  //TUTAJ innaczej testowac, merge() tak jak w remove,
+                                                    //proba dodania z tymi samymi dabymi ale inny obiekt
         assertNotNull(parentManager.add("Wojciech", "Stefaniak", "504728952"));
 
     }
