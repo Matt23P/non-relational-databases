@@ -34,8 +34,24 @@ public class Reservation extends AbstractEntity {
     @OneToOne
     @JoinColumn(name = "Parent_ID")
     private Parent parent;
-
+    //Reservation with basic Sitter class
     public Reservation(LocalDate date, LocalTime startHour, LocalTime endHour, Sitter sitter, Parent parent) {
+        this.date = date;
+        this.startHour = startHour;
+        this.endHour = endHour;
+        this.sitter = sitter;
+        this.parent = parent;
+    }
+    //Reservation with Housekeeper type Sitter
+    public Reservation(LocalDate date, LocalTime startHour, LocalTime endHour, Housekeeper sitter, Parent parent) {
+        this.date = date;
+        this.startHour = startHour;
+        this.endHour = endHour;
+        this.sitter = sitter;
+        this.parent = parent;
+    }
+    //Reservation with Academic type Sitter
+    public Reservation(LocalDate date, LocalTime startHour, LocalTime endHour, Academic sitter, Parent parent) {
         this.date = date;
         this.startHour = startHour;
         this.endHour = endHour;

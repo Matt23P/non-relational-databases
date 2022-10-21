@@ -12,6 +12,7 @@ public class ReservationRepository implements Repository<Reservation, Long> {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
             manager.persist(object);
+            manager.merge(object); //
             manager.getTransaction().commit();
             return object;
         }
