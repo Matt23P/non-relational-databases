@@ -10,10 +10,16 @@ public class SitterManager {
         this.sitterRepository = sitterRepository1;
     }
 
-    public Sitter add(String firstName, String lastName, double basePrice){
+    public Sitter add(String firstName, String lastName, double basePrice) {
         Sitter sitter = new Sitter(firstName, lastName, basePrice);
         return sitterRepository.add(sitter);
     }
-    public Sitter get(Long sitterId){return sitterRepository.get(sitterId);}
-    public boolean remove(Sitter sitter){return sitterRepository.remove(sitter);}
+
+    public Sitter get(Long sitterId) {
+        return sitterRepository.get(sitterId);
+    }
+
+    public boolean remove(Sitter sitter) {
+        return sitterRepository.remove(sitter);
+    }
 }
