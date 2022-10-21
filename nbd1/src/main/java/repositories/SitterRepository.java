@@ -15,6 +15,8 @@ public class SitterRepository implements Repository<Sitter, Long> {
             manager.persist(object);
             manager.getTransaction().commit();
             return object;
+        } catch (Exception ex) {
+            return null;
         }
     }
 

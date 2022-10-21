@@ -15,6 +15,8 @@ public class ReservationRepository implements Repository<Reservation, Long> {
             manager.merge(object); //
             manager.getTransaction().commit();
             return object;
+        } catch (Exception ex) {
+            return null;
         }
     }
 
@@ -33,7 +35,7 @@ public class ReservationRepository implements Repository<Reservation, Long> {
             manager.getTransaction().commit();
             return true;
         }
-        catch (Exception e){
+        catch (Exception ex){
             return false;
         }
     }

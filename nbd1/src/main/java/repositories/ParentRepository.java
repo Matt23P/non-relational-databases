@@ -16,6 +16,8 @@ public class ParentRepository implements Repository<Parent, Long> {
             manager.persist(object);
             manager.getTransaction().commit();
             return object;
+        } catch (Exception ex) {
+            return null;
         }
     }
 
