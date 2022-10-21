@@ -1,7 +1,6 @@
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import org.hibernate.type.LocalDateType;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -12,11 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import model.Reservation;
 import managers.ReservationManager;
 import repositories.ReservationRepository;
-import model.Sitter;
 import model.Housekeeper;
 import model.Academic;
 import model.Parent;
-import model.Reservation;
 
 public class ReservationTest {
     private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BABYSITTER");
@@ -27,8 +24,6 @@ public class ReservationTest {
 
     Parent parent1 = new Parent("Wojciech Zaza", "Al. Politechniki 21/37", "133742096");
     Parent parent2 = new Parent("Jacek BMW", "Ul. Jana Matejki 12", "690247331");
-
-    LocalDate date = LocalDate.of(2022, 5, 13);
 
 
     Reservation reservation1 = new Reservation(LocalDate.of(2023, 5, 13), LocalTime.of(13, 0), LocalTime.of(14, 0), sitter1, parent1);
