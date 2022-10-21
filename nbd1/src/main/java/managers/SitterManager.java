@@ -15,5 +15,5 @@ public class SitterManager {
         return sitterRepository.add(sitter);
     }
     public Sitter get(Long sitterId){return sitterRepository.get(sitterId);}
-    public void remove(Sitter sitter){sitterRepository.remove(sitter);}
+    public boolean remove(Sitter sitter){return sitterRepository.remove(sitter);}
 }

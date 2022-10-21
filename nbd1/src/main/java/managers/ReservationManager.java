@@ -20,6 +20,6 @@ public class ReservationManager {
         return reservationRepository.add(reservation);
     }
     public Reservation get(Long reservationId){return reservationRepository.get(reservationId);}
-    public void remove(Reservation reservation){reservationRepository.remove(reservation);}
+    public boolean remove(Reservation reservation){return reservationRepository.remove(reservation);}
 
 }
