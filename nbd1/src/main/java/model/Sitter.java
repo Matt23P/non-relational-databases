@@ -7,18 +7,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Sitter")
+@Table(name = "Sitter")
 @Access(AccessType.FIELD)
 public class Sitter extends AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Sitter_ID")
+    @Column(name = "Sitter_ID")
     private Long sitterId;
 
-    @Column(name="First_name")
+    @Column(name = "First_name")
     private String firstName;
 
-    @Column(name="Last_name")
+    @Column(name = "Last_name")
     private String lastName;
 
     @Column(name = "Base_price")
@@ -30,7 +30,7 @@ public class Sitter extends AbstractEntity {
         this.basePrice = basePrice;
     }
 
-    protected Sitter(){
+    protected Sitter() {
 
     }
 

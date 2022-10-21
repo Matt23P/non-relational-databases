@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Child")
+@Table(name = "Child")
 @Access(AccessType.FIELD)
 public class Child extends Parent {
     @Column(name = "Child_name")
@@ -27,7 +27,7 @@ public class Child extends Parent {
         this.childAge = childAge;
     }
 
-    protected Child(){
+    protected Child() {
 
     }
 }

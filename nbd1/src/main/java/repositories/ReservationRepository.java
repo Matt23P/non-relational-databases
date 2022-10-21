@@ -34,8 +34,7 @@ public class ReservationRepository implements Repository<Reservation, Long> {
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
             return true;
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }

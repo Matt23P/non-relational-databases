@@ -7,9 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Parent")
+@Table(name = "Parent")
 @Access(AccessType.FIELD)
-public class Parent extends AbstractEntity{
+public class Parent extends AbstractEntity {
     @Column(name = "Name")
     private String name;
 
@@ -30,7 +30,7 @@ public class Parent extends AbstractEntity{
         this.phoneNumber = phoneNumber;
     }
 
-    protected Parent(){
+    protected Parent() {
 
     }
 }

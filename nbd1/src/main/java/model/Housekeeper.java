@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Housekeeper")
+@Table(name = "Housekeeper")
 @Access(AccessType.FIELD)
 public class Housekeeper extends Sitter {
 
@@ -23,7 +23,7 @@ public class Housekeeper extends Sitter {
         this.skill = skill;
     }
 
-    protected Housekeeper(){
+    protected Housekeeper() {
 
     }
 }

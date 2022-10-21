@@ -12,16 +12,16 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name="Academic")
+@Table(name = "Academic")
 @Access(AccessType.FIELD)
 public class Academic extends Sitter {
-    @Column(name="Subject")
+    @Column(name = "Subject")
     private String subject;
 
-    @Column(name="Max_age")
+    @Column(name = "Max_age")
     private int max_age;
 
-    @Column(name="Bonus")
+    @Column(name = "Bonus")
     private double bonus;
 
     public Academic(String firstName, String lastName, double basePrice, String subject, int max_age, double bonus) {
@@ -37,7 +37,7 @@ public class Academic extends Sitter {
         this.bonus = bonus;
     }
 
-    protected Academic(){
+    protected Academic() {
 
     }
 }
