@@ -15,7 +15,7 @@ public class SitterRepository implements Repository<Sitter, Long> {
             manager.persist(object);
             manager.getTransaction().commit();
             return object;
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException persistenceException) {
             return null;
         }
     }
@@ -26,6 +26,8 @@ public class SitterRepository implements Repository<Sitter, Long> {
             manager.persist(object);
             manager.getTransaction().commit();
             return object;
+        }catch (IllegalArgumentException persistenceException) {
+            return null;
         }
     }
 
@@ -35,6 +37,8 @@ public class SitterRepository implements Repository<Sitter, Long> {
             manager.persist(object);
             manager.getTransaction().commit();
             return object;
+        }catch (IllegalArgumentException persistenceException) {
+            return null;
         }
     }
 
@@ -50,7 +54,7 @@ public class SitterRepository implements Repository<Sitter, Long> {
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        } catch (IllegalArgumentException persistenceException) {
             return false;
         }
     }

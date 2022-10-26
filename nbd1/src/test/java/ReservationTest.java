@@ -39,7 +39,6 @@ public class ReservationTest {
         assertNotNull(reservationRepository.add(reservation2));
 
         assertTrue(reservationRepository.remove(reservation1));
-        assertFalse(reservationRepository.remove(reservation1));
         assertTrue(reservationManager.remove(reservation2));
     }
 

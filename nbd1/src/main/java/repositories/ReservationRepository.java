@@ -33,7 +33,7 @@ public class ReservationRepository implements Repository<Reservation, Long> {
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
             return true;
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException persistenceException) {
             return false;
         }
     }

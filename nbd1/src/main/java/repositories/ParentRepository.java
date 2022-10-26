@@ -35,7 +35,7 @@ public class ParentRepository implements Repository<Parent, Long> {
             manager.remove(manager.merge(object));
             manager.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        } catch (IllegalArgumentException persistenceException) {
             return false;
         }
     }
