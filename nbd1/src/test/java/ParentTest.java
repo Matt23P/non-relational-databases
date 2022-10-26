@@ -1,9 +1,7 @@
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import model.Parent;
 import repositories.ParentRepository;
 import managers.ParentManager;
@@ -19,14 +17,13 @@ public class ParentTest {
 
     Parent parent2 = new Parent("Test Testowy", "Testowa 13 ", "111222333");
     Parent parent2a = new Parent("Test Testowy", "Testowa 13 ", "111222333");
-
     @Test
     void parentAddTest() {
         ParentManager parentManager = new ParentManager(parentRepository);
 
         assertNotNull(parentRepository.add(parent));
         assertNotNull(parentRepository.add(parent1));
-        //assertNull(parentRepository.add(parent)); //TUTAJ innaczej testowac, merge() tak jak w remove,
+        assertNotNull(parentRepository.add(parent)); //TUTAJ innaczej testowac, merge() tak jak w remove,
 
         //proba dodania z tymi samymi danymi poprzez manager
         assertNotNull(parentManager.add("Wojciech", "Stefaniak", "504728952"));

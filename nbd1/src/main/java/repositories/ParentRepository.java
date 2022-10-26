@@ -13,10 +13,10 @@ public class ParentRepository implements Repository<Parent, Long> {
     public Parent add(Parent object) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
-            manager.persist(object);
+            manager.merge(object);
             manager.getTransaction().commit();
             return object;
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException persistenceException){
             return null;
         }
     }
