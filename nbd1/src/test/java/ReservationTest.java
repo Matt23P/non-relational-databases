@@ -1,5 +1,3 @@
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -15,7 +13,6 @@ import model.Academic;
 import model.Parent;
 
 public class ReservationTest {
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BABYSITTER");
     private static final ReservationRepository parentRepository = new ReservationRepository();
 
     Academic sitter1 = new Academic("Anna", "Nowak", 20.0, "Math", 18, 5.0);

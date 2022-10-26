@@ -1,5 +1,3 @@
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +9,6 @@ import model.Housekeeper;
 import model.Academic;
 
 public class SitterTest {
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BABYSITTER");
     private static final SitterRepository sitterRepository = new SitterRepository();
 
     Sitter sitter = new Sitter("Agnieszka", "Bach", 50.0);
@@ -40,6 +37,7 @@ public class SitterTest {
         assertNotNull(sitterRepository.add(sitter_aca));
 
         assertTrue(sitterRepository.remove(sitter));
-        assertTrue(sitterRepository.remove(sitter_aca));
+        assertTrue(manager.remove(sitter_aca));
+
     }
 }

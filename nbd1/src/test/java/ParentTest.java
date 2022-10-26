@@ -1,5 +1,4 @@
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import model.Parent;
@@ -9,7 +8,7 @@ import managers.ParentManager;
 
 public class ParentTest {
 
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BABYSITTER");
+
     private static final ParentRepository parentRepository = new ParentRepository();
 
     Parent parent = new Parent("Mateusz Przybyl", "Lodz Politechniki 1", "602783554");
