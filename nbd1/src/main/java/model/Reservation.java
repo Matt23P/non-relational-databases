@@ -27,11 +27,11 @@ public class Reservation extends AbstractEntity {
     @Column(name = "End_hour")
     private LocalTime endHour;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "Sitter_ID")
     private Sitter sitter;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "Parent_ID")
     private Parent parent;
 

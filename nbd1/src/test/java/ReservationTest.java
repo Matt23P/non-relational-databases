@@ -12,9 +12,9 @@ import model.Housekeeper;
 import model.Academic;
 import model.Parent;
 
-public class ReservationTest {
-    private static final ReservationRepository parentRepository = new ReservationRepository();
 
+public class ReservationTest {
+    private static final ReservationRepository reservationRepository = new ReservationRepository();
     Academic sitter1 = new Academic("Anna", "Nowak", 20.0, "Math", 18, 5.0);
     Housekeeper sitter2 = new Housekeeper("Mia", "Kerfus", 35.0, "Cleaning");
 
@@ -27,20 +27,20 @@ public class ReservationTest {
 
     @Test
     void ReservationAddTest() {
-        ReservationManager manager = new ReservationManager(parentRepository);
-        assertNotNull(manager.add(LocalDate.of(2023, 2, 15), LocalTime.of(8, 0), LocalTime.of(14, 30), sitter1, parent2));
-        assertNotNull(parentRepository.add(reservation1));
+        ReservationManager reservationManager = new ReservationManager(reservationRepository);
+        assertNotNull(reservationManager.add(LocalDate.of(2023, 2, 15), LocalTime.of(8, 0), LocalTime.of(14, 30), sitter1, parent2));
+        assertNotNull(reservationRepository.add(reservation1));
     }
 
     @Test
     void ReservationRemoveTest() {
-        ReservationManager manager = new ReservationManager(parentRepository);
-        assertNotNull(parentRepository.add(reservation1));
-        assertNotNull(parentRepository.add(reservation2));
+        ReservationManager reservationManager = new ReservationManager(reservationRepository);
+        assertNotNull(reservationRepository.add(reservation1));
+        assertNotNull(reservationRepository.add(reservation2));
 
-        assertTrue(parentRepository.remove(reservation1));
-        assertFalse(parentRepository.remove(reservation1));
-        assertTrue(manager.remove(reservation2));
+        assertTrue(reservationRepository.remove(reservation1));
+        assertFalse(reservationRepository.remove(reservation1));
+        assertTrue(reservationManager.remove(reservation2));
     }
 
 }

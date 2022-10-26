@@ -11,11 +11,10 @@ public class ReservationRepository implements Repository<Reservation, Long> {
     public Reservation add(Reservation object) {
         try (EntityManager manager = EntityManagerCreator.getEntityManager()) {
             manager.getTransaction().begin();
-            manager.persist(object);
-            manager.merge(object); //
+            manager.merge(object);
             manager.getTransaction().commit();
             return object;
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException persistenceException) {
             return null;
         }
     }
