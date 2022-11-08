@@ -5,5 +5,5 @@
 
 With usage of Java
 
-Project develop on ORM branch
+ORM branch - Object-Relational Mapping warm-up project 
 ### 2022/23
