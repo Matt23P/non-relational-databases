@@ -12,10 +12,10 @@ public class ReservationMgd extends AbstractEntityMgd {
     @BsonCreator
     public ReservationMgd(@BsonProperty("_id") UniqueIdMgd entityId,
                           @BsonProperty("date") LocalDate date,
-                          @BsonProperty("starthour") LocalTime startTime,
+                          @BsonProperty("start_hour") LocalTime startTime,
                           @BsonProperty("end_hour") LocalTime endTime,
-                          @BsonProperty("sitterid") SitterMgd sitter,
-                          @BsonProperty("parentid") ParentMgd parent) {
+                          @BsonProperty("sitter_id") SitterMgd sitter,
+                          @BsonProperty("parent_id") ParentMgd parent) {
         super(entityId);
         this.date = date;
         this.startTime = startTime;

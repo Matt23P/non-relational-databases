@@ -9,9 +9,9 @@ public class ChildMgd extends ParentMgd {
     public ChildMgd(@BsonProperty("_id") UniqueIdMgd entityId,
                     @BsonProperty("name") String name,
                     @BsonProperty("address") String address,
-                    @BsonProperty("phonenumber") String phoneNumber,
-                    @BsonProperty("childname") String childName,
-                    @BsonProperty("childage") int childAge) {
+                    @BsonProperty("phone_number") String phoneNumber,
+                    @BsonProperty("child_name") String childName,
+                    @BsonProperty("child_age") int childAge) {
         super(entityId, name, address, phoneNumber);
         this.childName = childName;
         this.childAge = childAge;

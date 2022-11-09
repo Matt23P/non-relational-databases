@@ -8,9 +8,9 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 public class SitterMgd extends AbstractEntityMgd {
     @BsonCreator
     public SitterMgd(@BsonProperty("_id") UniqueIdMgd entityId,
-                     @BsonProperty("firstname") String firstName,
-                     @BsonProperty("lastname") String lastName,
-                     @BsonProperty("baseprice") double basePrice) {
+                     @BsonProperty("first_name") String firstName,
+                     @BsonProperty("last_name") String lastName,
+                     @BsonProperty("base_price") double basePrice) {
         super(entityId);
         this.firstName = firstName;
         this.lastName = lastName;

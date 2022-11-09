@@ -8,11 +8,11 @@ public class AcademicMgd extends SitterMgd {
 
     @BsonCreator
     public AcademicMgd(@BsonProperty("_id") UniqueIdMgd entityId,
-                       @BsonProperty("firstname") String firstName,
-                       @BsonProperty("lastname") String lastName,
-                       @BsonProperty("baseprice") double basePrice,
+                       @BsonProperty("first_name") String firstName,
+                       @BsonProperty("last_name") String lastName,
+                       @BsonProperty("base_price") double basePrice,
                        @BsonProperty("subject") String subject,
-                       @BsonProperty("maxage") int maxAge,
+                       @BsonProperty("max_age") int maxAge,
                        @BsonProperty("bonus") double bonus) {
         super(entityId, firstName, lastName, basePrice);
         this.subject = subject;

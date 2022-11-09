@@ -10,7 +10,7 @@ public class ParentMgd extends AbstractEntityMgd {
     public ParentMgd(@BsonProperty("_id") UniqueIdMgd entityId,
                      @BsonProperty("name") String name,
                      @BsonProperty("address") String address,
-                     @BsonProperty("phonenumber") String phoneNumber) {
+                     @BsonProperty("phone_number") String phoneNumber) {
         super(entityId);
         this.name = name;
         this.address = address;
