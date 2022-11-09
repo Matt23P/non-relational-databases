@@ -19,7 +19,6 @@ public class ChildMgd extends ParentMgd {
 
     @BsonProperty
     private String childName;
-
     @BsonProperty
     private int childAge;
 }

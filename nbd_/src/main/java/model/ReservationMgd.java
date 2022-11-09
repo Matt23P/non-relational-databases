@@ -30,10 +30,9 @@ public class ReservationMgd extends AbstractEntityMgd {
     private LocalTime startTime;
     @BsonProperty
     private LocalTime endTime;
-
     @BsonProperty
     private SitterMgd sitter;
-
     @BsonProperty
     private ParentMgd parent;
+
 }

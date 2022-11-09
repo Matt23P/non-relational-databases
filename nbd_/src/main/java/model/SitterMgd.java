@@ -19,10 +19,8 @@ public class SitterMgd extends AbstractEntityMgd {
 
     @BsonProperty
     private String firstName;
-
     @BsonProperty
     private String lastName;
-
     @BsonProperty
     private double basePrice;
 

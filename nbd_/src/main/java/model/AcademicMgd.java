@@ -22,10 +22,8 @@ public class AcademicMgd extends SitterMgd {
 
     @BsonProperty
     private String subject;
-
     @BsonProperty
     private int maxAge;
-
     @BsonProperty
     private double bonus;
 }
