@@ -1,3 +1,5 @@
+package entity;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
@@ -10,8 +12,6 @@ import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.pojo.Conventions;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
-
-import java.io.IOException;
 
 
 public abstract class AbstractMongoRepository implements AutoCloseable {

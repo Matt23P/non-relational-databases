@@ -1,3 +1,5 @@
+package entity;
+
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
 import java.io.Serializable;
