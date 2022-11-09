@@ -10,7 +10,7 @@ public class UniqueIdMgd {
     }
 
     public UniqueIdMgd() {
-
+        this.uuid = UUID.randomUUID();
     }
 
     public UUID getUuid() {
