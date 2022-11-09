@@ -7,13 +7,13 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
 public class AcademicMgd extends SitterMgd {
 
     @BsonCreator
-    public AcademicMgd(@BsonProperty UniqueIdMgd entityId,
-                       @BsonProperty String firstName,
-                       @BsonProperty String lastName,
-                       @BsonProperty double basePrice,
-                       @BsonProperty String subject,
-                       @BsonProperty int maxAge,
-                       @BsonProperty double bonus) {
+    public AcademicMgd(@BsonProperty("_id") UniqueIdMgd entityId,
+                       @BsonProperty("firstname") String firstName,
+                       @BsonProperty("lastname") String lastName,
+                       @BsonProperty("baseprice") double basePrice,
+                       @BsonProperty("subject") String subject,
+                       @BsonProperty("maxage") int maxAge,
+                       @BsonProperty("bonus") double bonus) {
         super(entityId, firstName, lastName, basePrice);
         this.subject = subject;
         this.maxAge = maxAge;
