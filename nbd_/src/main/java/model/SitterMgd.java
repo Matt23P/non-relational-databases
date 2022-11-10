@@ -17,6 +17,13 @@ public class SitterMgd extends AbstractEntityMgd {
         this.basePrice = basePrice;
     }
 
+    public SitterMgd(String firstName, String lastName, double basePrice) {
+        super(new UniqueIdMgd());
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.basePrice = basePrice;
+    }
+
     @BsonProperty
     private String firstName;
     @BsonProperty

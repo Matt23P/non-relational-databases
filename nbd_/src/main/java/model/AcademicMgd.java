@@ -20,6 +20,18 @@ public class AcademicMgd extends SitterMgd {
         this.bonus = bonus;
     }
 
+    public AcademicMgd(
+            String firstName,
+            String lastName,
+            double basePrice,
+            String subject,
+            int maxAge,
+            double bonus) {
+        super(new UniqueIdMgd(), firstName, lastName, basePrice);
+        this.subject = subject;
+        this.maxAge = maxAge;
+        this.bonus = bonus;
+    }
     @BsonProperty
     private String subject;
     @BsonProperty

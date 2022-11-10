@@ -17,6 +17,13 @@ public class ParentMgd extends AbstractEntityMgd {
         this.phoneNumber = phoneNumber;
     }
 
+    public ParentMgd(String name, String address, String phoneNumber) {
+        super(new UniqueIdMgd());
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
+
     @BsonProperty
     private String name;
     @BsonProperty

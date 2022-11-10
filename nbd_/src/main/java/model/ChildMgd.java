@@ -17,6 +17,17 @@ public class ChildMgd extends ParentMgd {
         this.childAge = childAge;
     }
 
+    public ChildMgd(
+            String name,
+            String address,
+            String phoneNumber,
+            String childName,
+            int childAge) {
+        super(new UniqueIdMgd(), name, address, phoneNumber);
+        this.childName = childName;
+        this.childAge = childAge;
+    }
+
     @BsonProperty
     private String childName;
     @BsonProperty

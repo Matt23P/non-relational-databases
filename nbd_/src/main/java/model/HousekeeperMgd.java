@@ -15,6 +15,15 @@ public class HousekeeperMgd extends SitterMgd {
         this.skill = skill;
     }
 
+    public HousekeeperMgd(
+            String firstName,
+            String lastName,
+            double basePrice,
+            String skill) {
+        super(new UniqueIdMgd(), firstName, lastName, basePrice);
+        this.skill = skill;
+    }
+
     @BsonProperty
     private String skill;
 }

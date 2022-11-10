@@ -13,15 +13,18 @@ public class ReservationMgd extends AbstractEntityMgd {
     public ReservationMgd(@BsonProperty("_id") UniqueIdMgd entityId,
                           @BsonProperty("date") LocalDate date,
                           @BsonProperty("start_hour") LocalTime startTime,
-                          @BsonProperty("end_hour") LocalTime endTime,
-                          @BsonProperty("sitter_id") SitterMgd sitter,
-                          @BsonProperty("parent_id") ParentMgd parent) {
+                          @BsonProperty("end_hour") LocalTime endTime) {
         super(entityId);
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.sitter = sitter;
-        this.parent = parent;
+    }
+
+    public ReservationMgd(LocalDate date, LocalTime startTime, LocalTime endTime) {
+        super(new UniqueIdMgd());
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     @BsonProperty
@@ -30,9 +33,5 @@ public class ReservationMgd extends AbstractEntityMgd {
     private LocalTime startTime;
     @BsonProperty
     private LocalTime endTime;
-    @BsonProperty
-    private SitterMgd sitter;
-    @BsonProperty
-    private ParentMgd parent;
 
 }
