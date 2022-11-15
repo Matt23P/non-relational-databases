@@ -1,21 +1,3 @@
-#version: '3.8'
-#
-#services:
-#  db:
-#    image: mongo:5
-#    restart: always
-#    container_name: mongodb
-#    environment:
-#      - MONGO_INITDB_DATABASE=nbddb
-#      - MONGO_INITDB_ROOT_USERNAME=admin
-#      - MONGO_INITDB_ROOT_PASSWORD=adminp
-#    ports:
-#      - '27017:27017'
-#
-#    volumes:
-#      - ./data:/data/db
-
-
 version: '3.8'
 services:
   mongo:
@@ -28,7 +10,6 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGO_INITDB_DATABASE=nbddb
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=adminp
     command: --config /etc/mongod.conf
