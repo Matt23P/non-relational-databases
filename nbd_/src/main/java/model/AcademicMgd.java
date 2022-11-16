@@ -1,20 +1,25 @@
 package model;
 
 import entity.UniqueIdMgd;
+import lombok.Getter;
+import lombok.Setter;
 import org.bson.codecs.pojo.annotations.BsonCreator;
+import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
+@Getter
+@Setter
 public class AcademicMgd extends SitterMgd {
 
     @BsonCreator
-    public AcademicMgd(@BsonProperty("_id") UniqueIdMgd entityId,
+    public AcademicMgd(@BsonId UniqueIdMgd entityId,
                        @BsonProperty("first_name") String firstName,
                        @BsonProperty("last_name") String lastName,
                        @BsonProperty("base_price") double basePrice,
                        @BsonProperty("subject") String subject,
                        @BsonProperty("max_age") int maxAge,
                        @BsonProperty("bonus") double bonus) {
-        super(entityId, firstName, lastName, basePrice);
+        super(entityId, firstName, lastName, basePrice, true);
         this.subject = subject;
         this.maxAge = maxAge;
         this.bonus = bonus;
@@ -27,7 +32,7 @@ public class AcademicMgd extends SitterMgd {
             String subject,
             int maxAge,
             double bonus) {
-        super(new UniqueIdMgd(), firstName, lastName, basePrice);
+        super(new UniqueIdMgd(), firstName, lastName, basePrice, true);
         this.subject = subject;
         this.maxAge = maxAge;
         this.bonus = bonus;
