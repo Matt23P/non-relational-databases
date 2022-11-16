@@ -19,51 +19,27 @@ public class ReservationMgd extends AbstractEntityMgd {
                           @BsonProperty("start_hour") LocalTime startTime,
                           @BsonProperty("end_hour") LocalTime endTime,
                           @BsonProperty("parent") ParentMgd parent,
-                          @BsonProperty("sitter") AcademicMgd academic) {
+                          @BsonProperty("sitter") SitterMgd sitter) {
         super(entityId);
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.parent = parent;
-        this.academic = academic;
-        academic.setAvailable(false);
+        this.sitter = sitter;
+        sitter.setAvailable(false);
     }
 
-    @BsonCreator
-    public ReservationMgd(@BsonId UniqueIdMgd entityId,
-                          @BsonProperty("date") LocalDate date,
-                          @BsonProperty("start_hour") LocalTime startTime,
-                          @BsonProperty("end_hour") LocalTime endTime,
-                          @BsonProperty("parent") ParentMgd parent,
-                          @BsonProperty("sitter") HousekeeperMgd housekeeper) {
-        super(entityId);
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.parent = parent;
-        this.housekeeper = housekeeper;
-        housekeeper.setAvailable(false);
-    }
 
-    public ReservationMgd(LocalDate date, LocalTime startTime, LocalTime endTime, ParentMgd parent, AcademicMgd academic) {
+    public ReservationMgd(LocalDate date, LocalTime startTime, LocalTime endTime, ParentMgd parent, SitterMgd sitter) {
         super(new UniqueIdMgd());
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
         this.parent = parent;
-        this.academic = academic;
-        academic.setAvailable(false);
+        this.sitter = sitter;
+        sitter.setAvailable(false);
     }
 
-    public ReservationMgd(LocalDate date, LocalTime startTime, LocalTime endTime, ParentMgd parent, HousekeeperMgd housekeeper) {
-        super(new UniqueIdMgd());
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.parent = parent;
-        this.housekeeper = housekeeper;
-        housekeeper.setAvailable(false);
-    }
 
     @BsonProperty
     private LocalDate date;
@@ -74,8 +50,6 @@ public class ReservationMgd extends AbstractEntityMgd {
     @BsonProperty
     private ParentMgd parent;
     @BsonProperty
-    private AcademicMgd academic;
-    @BsonProperty
-    private HousekeeperMgd housekeeper;
+    private SitterMgd sitter;
 
 }
