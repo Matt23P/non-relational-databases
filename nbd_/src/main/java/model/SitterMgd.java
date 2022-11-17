@@ -20,7 +20,7 @@ public class SitterMgd extends AbstractEntityMgd {
                      @BsonProperty("base_price") double basePrice,
                      @BsonProperty("skill") String skill,
                      @BsonProperty("min_age") Integer minAge,
-                     @BsonProperty("is_available") boolean isAvailable) {
+                     @BsonProperty("is_available") boolean available) {
         super(entityId);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,10 +28,10 @@ public class SitterMgd extends AbstractEntityMgd {
         this.basePrice = basePrice;
         this.skill = skill;
         this.minAge = minAge;
-        this.isAvailable = isAvailable;
+        this.available = available;
     }
 
-    public SitterMgd(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge, boolean isAvailable) {
+    public SitterMgd(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge, boolean available) {
         super(new UniqueIdMgd());
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,7 +39,7 @@ public class SitterMgd extends AbstractEntityMgd {
         this.basePrice = basePrice;
         this.skill = skill;
         this.minAge = minAge;
-        this.isAvailable = isAvailable;
+        this.available = available;
     }
 
     @BsonProperty("first_name")
@@ -55,11 +55,18 @@ public class SitterMgd extends AbstractEntityMgd {
     @BsonProperty("min_age")
     private Integer minAge;
     @BsonProperty("is_available")
-    private boolean isAvailable;
+    private boolean available;
 
     public enum SitterType{
         ACADEMIC,
         HOUSEKEEPER
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
 }
