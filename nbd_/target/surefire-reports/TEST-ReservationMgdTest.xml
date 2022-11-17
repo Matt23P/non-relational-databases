@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="ReservationMgdTest" time="0.001" errors="4" skipped="0">
+<testsuite tests="4" failures="0" name="ReservationMgdTest" time="0.541" errors="1" skipped="0">
   <properties>
     <property name="idea.version" value="2022.2.3"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -60,18 +60,60 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ReservationMgdTest" name="reservationGetTest" time="0.001">
-    <error type="java.lang.ExceptionInInitializerError">java.lang.ExceptionInInitializerError
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:250)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:260)
-	at org.junit.runners.BlockJUnit4ClassRunner$2.runReflectiveCall(BlockJUnit4ClassRunner.java:309)
+  <testcase classname="ReservationMgdTest" name="reservationGetTest" time="0.449">
+    <error message="An exception occurred when decoding using the AutomaticPojoCodec.
+Decoding into a &apos;ReservationMgd&apos; failed with the following exception:
+
+Failed to decode &apos;ReservationMgd&apos;. Decoding &apos;sitter&apos; errored with: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+
+A custom Codec or PojoCodec may need to be explicitly configured and registered to handle this type." type="org.bson.codecs.configuration.CodecConfigurationException">org.bson.codecs.configuration.CodecConfigurationException: An exception occurred when decoding using the AutomaticPojoCodec.
+Decoding into a &apos;ReservationMgd&apos; failed with the following exception:
+
+Failed to decode &apos;ReservationMgd&apos;. Decoding &apos;sitter&apos; errored with: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+
+A custom Codec or PojoCodec may need to be explicitly configured and registered to handle this type.
+	at org.bson.codecs.pojo.AutomaticPojoCodec.decode(AutomaticPojoCodec.java:40)
+	at com.mongodb.internal.operation.CommandResultArrayCodec.decode(CommandResultArrayCodec.java:52)
+	at com.mongodb.internal.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:60)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:87)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:42)
+	at org.bson.internal.LazyCodec.decode(LazyCodec.java:48)
+	at org.bson.codecs.BsonDocumentCodec.readValue(BsonDocumentCodec.java:104)
+	at com.mongodb.internal.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:63)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:87)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:42)
+	at com.mongodb.internal.connection.ReplyMessage.&lt;init&gt;(ReplyMessage.java:51)
+	at com.mongodb.internal.connection.InternalStreamConnection.getCommandResult(InternalStreamConnection.java:476)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:366)
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:279)
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.sendAndReceive(UsageTrackingInternalConnection.java:100)
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.sendAndReceive(DefaultConnectionPool.java:490)
+	at com.mongodb.internal.connection.CommandProtocolImpl.execute(CommandProtocolImpl.java:71)
+	at com.mongodb.internal.connection.DefaultServer$DefaultServerProtocolExecutor.execute(DefaultServer.java:253)
+	at com.mongodb.internal.connection.DefaultServerConnection.executeProtocol(DefaultServerConnection.java:202)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:118)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:110)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:345)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:336)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommandWithConnection(CommandOperationHelper.java:222)
+	at com.mongodb.internal.operation.FindOperation$1.call(FindOperation.java:658)
+	at com.mongodb.internal.operation.FindOperation$1.call(FindOperation.java:652)
+	at com.mongodb.internal.operation.OperationHelper.withReadConnectionSource(OperationHelper.java:583)
+	at com.mongodb.internal.operation.FindOperation.execute(FindOperation.java:652)
+	at com.mongodb.internal.operation.FindOperation.execute(FindOperation.java:80)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:170)
+	at com.mongodb.client.internal.FindIterableImpl.first(FindIterableImpl.java:200)
+	at repositories.ReservationRepositoryMgd.get(ReservationRepositoryMgd.java:23)
+	at ReservationMgdTest.reservationGetTest(ReservationMgdTest.java:56)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:306)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
 	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
@@ -95,26 +137,119 @@
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-Caused by: java.lang.IllegalArgumentException: The connection string is invalid. Connection strings must start with either &apos;mongodb://&apos; or &apos;mongodb+srv://
-	at com.mongodb.ConnectionString.&lt;init&gt;(ConnectionString.java:287)
-	at repositories.AbstractRepositoryMgd.&lt;init&gt;(AbstractRepositoryMgd.java:20)
-	at repositories.ReservationRepositoryMgd.&lt;init&gt;(ReservationRepositoryMgd.java:10)
-	at ReservationMgdTest.&lt;clinit&gt;(ReservationMgdTest.java:19)
-	... 33 more
-</error>
-  </testcase>
-  <testcase classname="ReservationMgdTest" name="reservationRemoveTest" time="0">
-    <error message="Could not initialize class ReservationMgdTest" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Could not initialize class ReservationMgdTest
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: Failed to decode &apos;ReservationMgd&apos;. Decoding &apos;sitter&apos; errored with: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+	at org.bson.codecs.pojo.PojoCodecImpl.decodePropertyModel(PojoCodecImpl.java:206)
+	at org.bson.codecs.pojo.PojoCodecImpl.decodeProperties(PojoCodecImpl.java:179)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:103)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:107)
+	at org.bson.codecs.pojo.AutomaticPojoCodec.decode(AutomaticPojoCodec.java:37)
+	... 64 more
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+	at org.bson.codecs.pojo.InstanceCreatorImpl.getInstance(InstanceCreatorImpl.java:94)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:104)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:107)
+	at org.bson.codecs.pojo.LazyPropertyModelCodec.decode(LazyPropertyModelCodec.java:51)
+	at org.bson.codecs.DecoderContext.decodeWithChildContext(DecoderContext.java:96)
+	at org.bson.codecs.pojo.PojoCodecImpl.decodePropertyModel(PojoCodecImpl.java:200)
+	... 68 more
+Caused by: org.bson.codecs.configuration.CodecConfigurationException
+	at org.bson.codecs.pojo.InstanceCreatorImpl.constructInstanceAndProcessCachedValues(InstanceCreatorImpl.java:106)
+	at org.bson.codecs.pojo.InstanceCreatorImpl.getInstance(InstanceCreatorImpl.java:92)
+	... 73 more
+Caused by: org.bson.codecs.configuration.CodecConfigurationException
+	at org.bson.codecs.pojo.CreatorExecutable.getInstance(CreatorExecutable.java:129)
+	at org.bson.codecs.pojo.InstanceCreatorImpl.constructInstanceAndProcessCachedValues(InstanceCreatorImpl.java:104)
+	... 74 more
+Caused by: java.lang.IllegalArgumentException
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:250)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:260)
-	at org.junit.runners.BlockJUnit4ClassRunner$2.runReflectiveCall(BlockJUnit4ClassRunner.java:309)
+	at org.bson.codecs.pojo.CreatorExecutable.getInstance(CreatorExecutable.java:124)
+	... 75 more
+</error>
+    <system-out>13:32:07.280 [main] INFO org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout=&apos;30000 ms&apos;}
+13:32:07.282 [main] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=UNKNOWN, servers=[{address=localhost:27017, type=UNKNOWN, state=CONNECTING}]
+13:32:07.284 [main] INFO org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout=&apos;30000 ms&apos;}
+13:32:07.287 [main] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=UNKNOWN, servers=[{address=localhost:27017, type=UNKNOWN, state=CONNECTING}]
+13:32:07.288 [main] INFO org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout=&apos;30000 ms&apos;}
+13:32:07.288 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b247&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:4, serverValue:226}] to localhost:27017
+13:32:07.289 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b247&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=5209400, setName=&apos;replica_set_single&apos;, canonicalAddress=mongodb:27017, hosts=[mongodb:27017], passives=[], arbiters=[], primary=&apos;mongodb:27017&apos;, tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1, topologyVersion=TopologyVersion{processId=6376277b9739af813784cd86, counter=6}, lastWriteDate=Thu Nov 17 13:32:07 CET 2022, lastUpdateTimeNanos=636087492576400}
+13:32:07.289 [main] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=UNKNOWN, servers=[{address=localhost:27017, type=UNKNOWN, state=CONNECTING}]
+13:32:07.289 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b247&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=REPLICA_SET, servers=[{address=localhost:27017, type=REPLICA_SET_PRIMARY, roundTripTime=5.2 ms, state=CONNECTED}]
+13:32:07.289 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b247&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Checking status of localhost:27017
+13:32:07.289 [cluster-rtt-ClusterId{value=&apos;637629c7e196a51f2279b247&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:5, serverValue:225}] to localhost:27017
+13:32:07.297 [cluster-rtt-ClusterId{value=&apos;637629c7e196a51f2279b248&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:7, serverValue:228}] to localhost:27017
+13:32:07.297 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b248&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:6, serverValue:227}] to localhost:27017
+13:32:07.298 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b248&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=8719700, setName=&apos;replica_set_single&apos;, canonicalAddress=mongodb:27017, hosts=[mongodb:27017], passives=[], arbiters=[], primary=&apos;mongodb:27017&apos;, tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1, topologyVersion=TopologyVersion{processId=6376277b9739af813784cd86, counter=6}, lastWriteDate=Thu Nov 17 13:32:07 CET 2022, lastUpdateTimeNanos=636087501161500}
+13:32:07.298 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b248&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=REPLICA_SET, servers=[{address=localhost:27017, type=REPLICA_SET_PRIMARY, roundTripTime=8.7 ms, state=CONNECTED}]
+13:32:07.298 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b248&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Checking status of localhost:27017
+13:32:07.300 [cluster-rtt-ClusterId{value=&apos;637629c7e196a51f2279b249&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:9, serverValue:229}] to localhost:27017
+13:32:07.302 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b249&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:8, serverValue:230}] to localhost:27017
+13:32:07.303 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b249&apos;, description=&apos;null&apos;}-localhost:27017] INFO org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=REPLICA_SET_PRIMARY, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=17, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=8176300, setName=&apos;replica_set_single&apos;, canonicalAddress=mongodb:27017, hosts=[mongodb:27017], passives=[], arbiters=[], primary=&apos;mongodb:27017&apos;, tagSet=TagSet{[]}, electionId=7fffffff0000000000000001, setVersion=1, topologyVersion=TopologyVersion{processId=6376277b9739af813784cd86, counter=6}, lastWriteDate=Thu Nov 17 13:32:07 CET 2022, lastUpdateTimeNanos=636087506601100}
+13:32:07.304 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b249&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Updating cluster description to  {type=REPLICA_SET, servers=[{address=localhost:27017, type=REPLICA_SET_PRIMARY, roundTripTime=8.2 ms, state=CONNECTED}]
+13:32:07.304 [cluster-ClusterId{value=&apos;637629c7e196a51f2279b249&apos;, description=&apos;null&apos;}-localhost:27017] DEBUG org.mongodb.driver.cluster - Checking status of localhost:27017
+13:32:07.364 [main] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:10, serverValue:231}] to localhost:27017
+13:32:07.366 [main] DEBUG org.mongodb.driver.protocol.command - Sending command &apos;{&quot;insert&quot;: &quot;parents&quot;, &quot;ordered&quot;: true, &quot;txnNumber&quot;: 1, &quot;$db&quot;: &quot;SITTER&quot;, &quot;lsid&quot;: {&quot;id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;IZ+59nrVRXSQYtgfnP6O7g==&quot;, &quot;subType&quot;: &quot;04&quot;}}}, &quot;documents&quot;: [{&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;JDqhzAWWT221FRHDXzdVLw==&quot;, &quot;subType&quot;: &quot;04&quot;}}, &quot;address&quot;: &quot;Lipinki Laczna43&quot;, &quot;childAge&quot;: 8, &quot;name&quot;: &quot;Mateusz Przybylski&quot;, &quot;phoneNumber&quot;: &quot;694202137&quot;}]}&apos; with request id 34 to database SITTER on connection [connectionId{localValue:10, serverValue:231}] to server localhost:27017
+13:32:07.383 [main] DEBUG org.mongodb.driver.protocol.command - Execution of command with request id 34 completed successfully in 17.10 ms on connection [connectionId{localValue:10, serverValue:231}] to server localhost:27017
+13:32:07.486 [main] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:11, serverValue:235}] to localhost:27017
+13:32:07.495 [main] DEBUG org.mongodb.driver.protocol.command - Sending command &apos;{&quot;insert&quot;: &quot;sitters&quot;, &quot;ordered&quot;: true, &quot;txnNumber&quot;: 1, &quot;$db&quot;: &quot;SITTER&quot;, &quot;lsid&quot;: {&quot;id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;rfETMmYbQrS9V7Mj6ZR8mw==&quot;, &quot;subType&quot;: &quot;04&quot;}}}, &quot;documents&quot;: [{&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;K9yJFUhPQE+FvhMSX3LlzQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}, &quot;available&quot;: false, &quot;basePrice&quot;: 110.0, &quot;firstName&quot;: &quot;Katarzyna&quot;, &quot;lastName&quot;: &quot;Nowak&quot;, &quot;minAge&quot;: 7, &quot;sitterType&quot;: &quot;HOUSEKEEPER&quot;, &quot;skill&quot;: &quot;Cooking&quot;}]}&apos; with request id 37 to database SITTER on connection [connectionId{localValue:11, serverValue:235}] to server localhost:27017
+13:32:07.527 [main] DEBUG org.mongodb.driver.protocol.command - Execution of command with request id 37 completed successfully in 33.18 ms on connection [connectionId{localValue:11, serverValue:235}] to server localhost:27017
+13:32:07.607 [main] INFO org.mongodb.driver.connection - Opened connection [connectionId{localValue:12, serverValue:236}] to localhost:27017
+13:32:07.686 [main] DEBUG org.mongodb.driver.protocol.command - Sending command &apos;{&quot;insert&quot;: &quot;reservations&quot;, &quot;ordered&quot;: true, &quot;txnNumber&quot;: 1, &quot;$db&quot;: &quot;SITTER&quot;, &quot;lsid&quot;: {&quot;id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;4T/c/af/TBuo2gYgMexsmQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}}, &quot;documents&quot;: [{&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;ht1I/QbKT8eck+NHkldJIQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}, &quot;date&quot;: {&quot;$date&quot;: &quot;2022-12-12T00:00:00Z&quot;}, &quot;endTime&quot;: {&quot;$date&quot;: &quot;1970-01-01T20:00:00Z&quot;}, &quot;parent&quot;: {&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;JDqhzAWWT221FRHDXzdVLw==&quot;, &quot;subType&quot;: &quot;04&quot;}}, &quot;address&quot;: &quot;Lipinki Laczna43&quot;, &quot;childAge&quot;: 8, &quot;name&quot;: &quot;Mateusz Przybylski&quot;, &quot;phoneNumber&quot;: &quot;694202137&quot;}, &quot;sitter&quot;: {&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;K9yJFUhPQE+FvhMSX3LlzQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}, &quot;available&quot;: false, &quot;basePrice&quot;: 110.0, &quot;firstName&quot;: &quot;Katarzyna&quot;, &quot;lastName&quot;: &quot;Nowak&quot;, &quot;minAge&quot;: 7, &quot;sitterType&quot;: &quot;HOUSEKEEPER&quot;, &quot;skill&quot;: &quot;Cooking&quot;}, &quot;startTime&quot;: {&quot;$date&quot;: &quot;1970-01-01T09:00:00Z&quot;}}]}&apos; with request id 40 to database SITTER on connection [connectionId{localValue:12, serverValue:236}] to server localhost:27017
+13:32:07.725 [main] DEBUG org.mongodb.driver.protocol.command - Execution of command with request id 40 completed successfully in 73.41 ms on connection [connectionId{localValue:12, serverValue:236}] to server localhost:27017
+13:32:07.727 [main] DEBUG org.mongodb.driver.protocol.command - Sending command &apos;{&quot;find&quot;: &quot;reservations&quot;, &quot;filter&quot;: {&quot;_id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;ht1I/QbKT8eck+NHkldJIQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}}, &quot;limit&quot;: 1, &quot;singleBatch&quot;: true, &quot;$db&quot;: &quot;SITTER&quot;, &quot;$clusterTime&quot;: {&quot;clusterTime&quot;: {&quot;$timestamp&quot;: {&quot;t&quot;: 1668688327, &quot;i&quot;: 15}}, &quot;signature&quot;: {&quot;hash&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;j19V7BK0mU5cEfRXtguzoxjWv9k=&quot;, &quot;subType&quot;: &quot;00&quot;}}, &quot;keyId&quot;: 7166960687875358726}}, &quot;lsid&quot;: {&quot;id&quot;: {&quot;$binary&quot;: {&quot;base64&quot;: &quot;4T/c/af/TBuo2gYgMexsmQ==&quot;, &quot;subType&quot;: &quot;04&quot;}}}, &quot;$readPreference&quot;: {&quot;mode&quot;: &quot;primaryPreferred&quot;}}&apos; with request id 41 to database SITTER on connection [connectionId{localValue:12, serverValue:236}] to server localhost:27017
+13:32:07.730 [main] DEBUG org.mongodb.driver.protocol.command - Execution of command with request id 41 completed successfully in 3.74 ms on connection [connectionId{localValue:12, serverValue:236}] to server localhost:27017
+13:32:07.739 [main] DEBUG org.mongodb.driver.protocol.command - Execution of command with request id 41 failed to complete successfully in 7.16 ms on connection [connectionId{localValue:12, serverValue:236}] to server localhost:27017
+org.bson.codecs.configuration.CodecConfigurationException: An exception occurred when decoding using the AutomaticPojoCodec.
+Decoding into a &apos;ReservationMgd&apos; failed with the following exception:
+
+Failed to decode &apos;ReservationMgd&apos;. Decoding &apos;sitter&apos; errored with: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+
+A custom Codec or PojoCodec may need to be explicitly configured and registered to handle this type.
+	at org.bson.codecs.pojo.AutomaticPojoCodec.decode(AutomaticPojoCodec.java:40)
+	at com.mongodb.internal.operation.CommandResultArrayCodec.decode(CommandResultArrayCodec.java:52)
+	at com.mongodb.internal.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:60)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:87)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:42)
+	at org.bson.internal.LazyCodec.decode(LazyCodec.java:48)
+	at org.bson.codecs.BsonDocumentCodec.readValue(BsonDocumentCodec.java:104)
+	at com.mongodb.internal.operation.CommandResultDocumentCodec.readValue(CommandResultDocumentCodec.java:63)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:87)
+	at org.bson.codecs.BsonDocumentCodec.decode(BsonDocumentCodec.java:42)
+	at com.mongodb.internal.connection.ReplyMessage.&lt;init&gt;(ReplyMessage.java:51)
+	at com.mongodb.internal.connection.InternalStreamConnection.getCommandResult(InternalStreamConnection.java:476)
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:366)
+	at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:279)
+	at com.mongodb.internal.connection.UsageTrackingInternalConnection.sendAndReceive(UsageTrackingInternalConnection.java:100)
+	at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.sendAndReceive(DefaultConnectionPool.java:490)
+	at com.mongodb.internal.connection.CommandProtocolImpl.execute(CommandProtocolImpl.java:71)
+	at com.mongodb.internal.connection.DefaultServer$DefaultServerProtocolExecutor.execute(DefaultServer.java:253)
+	at com.mongodb.internal.connection.DefaultServerConnection.executeProtocol(DefaultServerConnection.java:202)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:118)
+	at com.mongodb.internal.connection.DefaultServerConnection.command(DefaultServerConnection.java:110)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:345)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommand(CommandOperationHelper.java:336)
+	at com.mongodb.internal.operation.CommandOperationHelper.executeCommandWithConnection(CommandOperationHelper.java:222)
+	at com.mongodb.internal.operation.FindOperation$1.call(FindOperation.java:658)
+	at com.mongodb.internal.operation.FindOperation$1.call(FindOperation.java:652)
+	at com.mongodb.internal.operation.OperationHelper.withReadConnectionSource(OperationHelper.java:583)
+	at com.mongodb.internal.operation.FindOperation.execute(FindOperation.java:652)
+	at com.mongodb.internal.operation.FindOperation.execute(FindOperation.java:80)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:170)
+	at com.mongodb.client.internal.FindIterableImpl.first(FindIterableImpl.java:200)
+	at repositories.ReservationRepositoryMgd.get(ReservationRepositoryMgd.java:23)
+	at ReservationMgdTest.reservationGetTest(ReservationMgdTest.java:56)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:306)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
 	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
 	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
@@ -138,80 +273,40 @@ Caused by: java.lang.IllegalArgumentException: The connection string is invalid.
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
-  </testcase>
-  <testcase classname="ReservationMgdTest" name="updateReservationTest" time="0">
-    <error message="Could not initialize class ReservationMgdTest" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Could not initialize class ReservationMgdTest
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: Failed to decode &apos;ReservationMgd&apos;. Decoding &apos;sitter&apos; errored with: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+	at org.bson.codecs.pojo.PojoCodecImpl.decodePropertyModel(PojoCodecImpl.java:206)
+	at org.bson.codecs.pojo.PojoCodecImpl.decodeProperties(PojoCodecImpl.java:179)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:103)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:107)
+	at org.bson.codecs.pojo.AutomaticPojoCodec.decode(AutomaticPojoCodec.java:37)
+	... 64 common frames omitted
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: Could not construct new instance of: SitterMgd. Missing the following properties: [sitter_type, base_price, last_name, min_age, first_name, is_available]
+	at org.bson.codecs.pojo.InstanceCreatorImpl.getInstance(InstanceCreatorImpl.java:94)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:104)
+	at org.bson.codecs.pojo.PojoCodecImpl.decode(PojoCodecImpl.java:107)
+	at org.bson.codecs.pojo.LazyPropertyModelCodec.decode(LazyPropertyModelCodec.java:51)
+	at org.bson.codecs.DecoderContext.decodeWithChildContext(DecoderContext.java:96)
+	at org.bson.codecs.pojo.PojoCodecImpl.decodePropertyModel(PojoCodecImpl.java:200)
+	... 68 common frames omitted
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: null
+	at org.bson.codecs.pojo.InstanceCreatorImpl.constructInstanceAndProcessCachedValues(InstanceCreatorImpl.java:106)
+	at org.bson.codecs.pojo.InstanceCreatorImpl.getInstance(InstanceCreatorImpl.java:92)
+	... 73 common frames omitted
+Caused by: org.bson.codecs.configuration.CodecConfigurationException: null
+	at org.bson.codecs.pojo.CreatorExecutable.getInstance(CreatorExecutable.java:129)
+	at org.bson.codecs.pojo.InstanceCreatorImpl.constructInstanceAndProcessCachedValues(InstanceCreatorImpl.java:104)
+	... 74 common frames omitted
+Caused by: java.lang.IllegalArgumentException: null
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:250)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:260)
-	at org.junit.runners.BlockJUnit4ClassRunner$2.runReflectiveCall(BlockJUnit4ClassRunner.java:309)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
+	at org.bson.codecs.pojo.CreatorExecutable.getInstance(CreatorExecutable.java:124)
+	... 75 common frames omitted
+</system-out>
   </testcase>
-  <testcase classname="ReservationMgdTest" name="reservationAddTest" time="0">
-    <error message="Could not initialize class ReservationMgdTest" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: Could not initialize class ReservationMgdTest
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:250)
-	at org.junit.runners.BlockJUnit4ClassRunner.createTest(BlockJUnit4ClassRunner.java:260)
-	at org.junit.runners.BlockJUnit4ClassRunner$2.runReflectiveCall(BlockJUnit4ClassRunner.java:309)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.BlockJUnit4ClassRunner.methodBlock(BlockJUnit4ClassRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
-  </testcase>
+  <testcase classname="ReservationMgdTest" name="reservationRemoveTest" time="0"/>
+  <testcase classname="ReservationMgdTest" name="updateReservationTest" time="0"/>
+  <testcase classname="ReservationMgdTest" name="reservationAddTest" time="0.092"/>
 </testsuite>

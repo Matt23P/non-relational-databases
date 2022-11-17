@@ -38,7 +38,7 @@ public class SitterRepositoryMgd extends AbstractRepositoryMgd implements Reposi
                 Updates.set("base_price", item1.getBasePrice()),
                 Updates.set("skill", item1.getSkill()),
                 Updates.set("min_age", item1.getMinAge()),
-                Updates.set("is_available", item1.getIsAvailable())
+                Updates.set("is_available", item1.isAvailable())
         );
     }
 //D
@@ -50,7 +50,7 @@ public class SitterRepositoryMgd extends AbstractRepositoryMgd implements Reposi
 
     public void setAvailable(SitterMgd item, boolean available){ item.setAvailable(available); }
 
-    public boolean getAvailable(SitterMgd item){ return item.getIsAvailable(); }
+    public boolean getAvailable(SitterMgd item){ return item.isAvailable(); }
 
     public long getCollectionSize() {
         return sitterMgdMongoCollection.countDocuments();

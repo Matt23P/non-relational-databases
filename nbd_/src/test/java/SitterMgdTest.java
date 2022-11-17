@@ -53,7 +53,7 @@ public class SitterMgdTest {
         assertEquals(90, sitterMgd.getBasePrice());
         assertEquals("Cleaning", sitterMgd.getSkill());
         assertEquals(5, sitterMgd.getMinAge());
-        assertEquals(false, sitterMgd.getIsAvailable());
+        assertEquals(false, sitterMgd.isAvailable());
 
         sitterRepositoryMgd.update(sitterMgd);
 
@@ -65,7 +65,7 @@ public class SitterMgdTest {
         assertEquals(sitterMgd.getBasePrice(), sitterMgd_updated.getBasePrice());
         assertEquals(sitterMgd.getSkill(), sitterMgd_updated.getSkill());
         assertEquals(sitterMgd.getMinAge(), sitterMgd_updated.getMinAge());
-        assertEquals(sitterMgd.getIsAvailable(), sitterMgd_updated.getIsAvailable());
+        assertEquals(sitterMgd.isAvailable(), sitterMgd_updated.isAvailable());
     }
 
     @Test

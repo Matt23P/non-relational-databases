@@ -42,9 +42,9 @@ public class SitterMgd extends AbstractEntityMgd {
         this.isAvailable = isAvailable;
     }
 
-    @BsonProperty
+    @BsonProperty("first_name")
     private String firstName;
-    @BsonProperty
+    @BsonProperty("last_name")
     private String lastName;
     @BsonProperty
     private SitterType  sitterType;
@@ -61,11 +61,5 @@ public class SitterMgd extends AbstractEntityMgd {
         ACADEMIC,
         HOUSEKEEPER
     }
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
 
-    public boolean getIsAvailable() {
-        return isAvailable;
-    }
 }

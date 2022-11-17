@@ -32,7 +32,7 @@ services:
       mongo:
         condition: service_healthy
     command: >
-      mongosh --host mongodb27017 --username admin --password adminpassword --authenticationDatabase admin --eval
+      mongosh --host mongodb:27017 --username admin --password adminp --authenticationDatabase admin --eval
       '
       rs.initiate();
       '
