@@ -19,6 +19,6 @@ public class EntityMgd {
     }
     @BsonId
     private UniqueIdMgd entityId;
-    @BsonProperty
+    @BsonProperty("name")
     private String name;
 }
