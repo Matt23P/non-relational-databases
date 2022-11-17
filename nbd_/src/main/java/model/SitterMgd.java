@@ -46,15 +46,15 @@ public class SitterMgd extends AbstractEntityMgd {
     private String firstName;
     @BsonProperty("last_name")
     private String lastName;
-    @BsonProperty
+    @BsonProperty("sitter_type")
     private SitterType  sitterType;
-    @BsonProperty
+    @BsonProperty("base_price")
     private double basePrice;
-    @BsonProperty
+    @BsonProperty("skill")
     private String skill;
-    @BsonProperty
+    @BsonProperty("min_age")
     private Integer minAge;
-    @BsonProperty
+    @BsonProperty("is_available")
     private boolean isAvailable;
 
     public enum SitterType{

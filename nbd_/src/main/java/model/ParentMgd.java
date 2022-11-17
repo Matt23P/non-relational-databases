@@ -31,13 +31,13 @@ public class ParentMgd extends AbstractEntityMgd {
         this.childAge = childAge;
     }
 
-    @BsonProperty
+    @BsonProperty("name")
     private String name;
-    @BsonProperty
+    @BsonProperty("address")
     private String address;
-    @BsonProperty
+    @BsonProperty("phone_number")
     private String phoneNumber;
-    @BsonProperty
+    @BsonProperty("child_age")
     private Integer childAge;
 
 }

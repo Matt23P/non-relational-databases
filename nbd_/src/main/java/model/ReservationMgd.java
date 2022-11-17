@@ -41,15 +41,15 @@ public class ReservationMgd extends AbstractEntityMgd {
     }
 
 
-    @BsonProperty
+    @BsonProperty("date")
     private LocalDate date;
-    @BsonProperty
+    @BsonProperty("start_time")
     private LocalTime startTime;
-    @BsonProperty
+    @BsonProperty("end_time")
     private LocalTime endTime;
-    @BsonProperty
+    @BsonProperty("parent")
     private ParentMgd parent;
-    @BsonProperty
+    @BsonProperty("sitter")
     private SitterMgd sitter;
 
 }
