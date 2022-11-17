@@ -23,11 +23,12 @@ public class ParentMgd extends AbstractEntityMgd {
         this.childAge = childAge;
     }
 
-    public ParentMgd(String name, String address, String phoneNumber) {
+    public ParentMgd(String name, String address, String phoneNumber, Integer childAge) {
         super(new UniqueIdMgd());
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.childAge = childAge;
     }
 
     @BsonProperty
@@ -38,4 +39,5 @@ public class ParentMgd extends AbstractEntityMgd {
     private String phoneNumber;
     @BsonProperty
     private Integer childAge;
+
 }
