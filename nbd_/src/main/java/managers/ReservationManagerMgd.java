@@ -15,6 +15,7 @@ public class ReservationManagerMgd {
 
     public boolean add(LocalDate date, LocalTime startTime, LocalTime endTime, ParentMgd parent, SitterMgd sitter){
         if(sitter.getIsAvailable()){
+            sitter.setAvailable(false);
             ReservationMgd reservationMgd = new ReservationMgd(date, startTime, endTime, parent, sitter);
             return reservationRepositoryMgd.add(reservationMgd) != null;
         }
