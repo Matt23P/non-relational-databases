@@ -25,9 +25,9 @@ public class ReservationMgdTest {
     @Test
     public void reservationAddTest(){
         ParentMgd parentMgd_1 = new ParentMgd("Mateusz Przybylski", "Lipinki Laczna43", "694202137", 8);
-        SitterMgd sitterMgd_1 = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7);
+        SitterMgd sitterMgd_1 = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7, true);
         ParentMgd parentMgd_2 = new ParentMgd("Wojciech Stefanowski", "Lodz Politechniki1", "211566677", 5);
-        SitterMgd sitterMgd_2 = new SitterMgd("Krzysztof", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10);
+        SitterMgd sitterMgd_2 = new SitterMgd("Krzysztof", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10, true);
         long collectionSize = reservationManagerMgd.getSize();
 
         assertNotNull(parentRepositoryMgd.add(parentMgd_1));
@@ -46,7 +46,7 @@ public class ReservationMgdTest {
     @Test
     public void reservationGetTest(){
         ParentMgd parentMgd = new ParentMgd("Mateusz Przybylski", "Lipinki Laczna43", "694202137", 8);
-        SitterMgd sitterMgd = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7);
+        SitterMgd sitterMgd = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7, true);
         ReservationMgd reservationMgd = new ReservationMgd(LocalDate.of(2022, 12, 12), LocalTime.of(9, 0), LocalTime.of(20, 0), parentMgd, sitterMgd);
 
         assertNotNull(parentRepositoryMgd.add(parentMgd));

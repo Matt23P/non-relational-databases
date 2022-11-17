@@ -31,7 +31,7 @@ public class SitterMgd extends AbstractEntityMgd {
         this.isAvailable = isAvailable;
     }
 
-    public SitterMgd(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge) {
+    public SitterMgd(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge, boolean isAvailable) {
         super(new UniqueIdMgd());
         this.firstName = firstName;
         this.lastName = lastName;
@@ -39,7 +39,7 @@ public class SitterMgd extends AbstractEntityMgd {
         this.basePrice = basePrice;
         this.skill = skill;
         this.minAge = minAge;
-        this.isAvailable = true;
+        this.isAvailable = isAvailable;
     }
 
     @BsonProperty

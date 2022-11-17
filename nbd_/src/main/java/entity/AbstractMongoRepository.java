@@ -6,19 +6,19 @@ import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.sun.tools.javac.util.List;
+//import com.sun.tools.javac.util.List;
 import org.bson.UuidRepresentation;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.pojo.Conventions;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 
-
+import java.util.List;
 
 
 public abstract class AbstractMongoRepository implements AutoCloseable {
-    private ConnectionString connectionString = new ConnectionString("mongo://localhost:27017");
-    private MongoCredential credential = MongoCredential.createCredential("admin", "", "adminp".toCharArray());
+    private ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
+    private MongoCredential credential = MongoCredential.createCredential("admin", "admin", "adminp".toCharArray());
     private CodecRegistry pojoCodecRegistry =
             CodecRegistries.fromProviders(PojoCodecProvider.builder()
                     .automatic(true)

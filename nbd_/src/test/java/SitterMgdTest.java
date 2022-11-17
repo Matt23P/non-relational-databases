@@ -19,7 +19,7 @@ public class SitterMgdTest {
 
     @Test
     public void sitterGetTest(){
-        SitterMgd sitterMgd = new SitterMgd("Wojciech", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10);
+        SitterMgd sitterMgd = new SitterMgd("Wojciech", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10, true);
         assertNotNull(sitterRepositoryMgd.add(sitterMgd));
 
         assertEquals(sitterMgd, sitterRepositoryMgd.get(sitterMgd));
@@ -36,7 +36,7 @@ public class SitterMgdTest {
 
     @Test
     public void sitterUpdateTest(){
-        SitterMgd sitterMgd = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7);
+        SitterMgd sitterMgd = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7, true);
         assertNotNull(sitterRepositoryMgd.add(sitterMgd));
 
         sitterMgd.setFirstName("Anna");
@@ -70,8 +70,8 @@ public class SitterMgdTest {
 
     @Test
     public void sitterRemoveTest(){
-        SitterMgd sitterMgd_1 = new SitterMgd("Wojciech", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10);
-        SitterMgd sitterMgd_2 = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7);
+        SitterMgd sitterMgd_1 = new SitterMgd("Wojciech", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10, true);
+        SitterMgd sitterMgd_2 = new SitterMgd("Katarzyna", "Nowak", SitterMgd.SitterType.HOUSEKEEPER, 110, "Cooking", 7, true);
 
         assertNotNull(sitterRepositoryMgd.add(sitterMgd_1));
         assertNotNull(sitterRepositoryMgd.add(sitterMgd_2));

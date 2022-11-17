@@ -10,7 +10,7 @@ public class SitterManagerMgd {
     public SitterManagerMgd(SitterRepositoryMgd sitterRepositoryMgd){ this.sitterRepositoryMgd = sitterRepositoryMgd; }
 //C
     public boolean add(String firstName, String lastName, SitterMgd.SitterType sitterType, double basePrice, String skill, Integer minAge, boolean isAvailable){
-        SitterMgd sitterMgd = new SitterMgd(firstName, lastName, sitterType, basePrice, skill, minAge);
+        SitterMgd sitterMgd = new SitterMgd(firstName, lastName, sitterType, basePrice, skill, minAge, isAvailable);
         return sitterRepositoryMgd.add(sitterMgd) != null;
     }
 //R
