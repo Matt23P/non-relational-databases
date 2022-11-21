@@ -25,5 +25,4 @@ public class JedisDBConnection {
         pool = new JedisPooled(new HostAndPort("localhost", 6379), clientConfig);
     }
 
-
 }
