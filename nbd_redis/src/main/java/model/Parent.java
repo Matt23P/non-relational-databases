@@ -4,7 +4,11 @@ import entity.AbstractEntity;
 import entity.UniqueId;
 import jakarta.json.bind.annotation.JsonbCreator;
 import jakarta.json.bind.annotation.JsonbProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Parent extends AbstractEntity {
     @JsonbCreator
     public Parent(
