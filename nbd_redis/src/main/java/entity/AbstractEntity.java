@@ -1,9 +1,11 @@
 package entity;
 
+import org.bson.codecs.pojo.annotations.BsonId;
+
 import java.io.Serializable;
 
 public abstract class AbstractEntity implements Serializable {
-    @BsonId //JsonbId nie ma czegos takiego
+    @BsonId
     private final UniqueId entityId;
 
     public UniqueId getEntityId() {
