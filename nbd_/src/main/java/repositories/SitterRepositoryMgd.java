@@ -34,12 +34,12 @@ public class SitterRepositoryMgd extends AbstractRepositoryMgd implements Reposi
         Bson update = Updates.combine(
                 Updates.set("first_name", item1.getFirstName()),
                 Updates.set("last_name", item1.getLastName()),
-                Updates.set("sitter_type", item1.getSitterType()),
                 Updates.set("base_price", item1.getBasePrice()),
                 Updates.set("skill", item1.getSkill()),
                 Updates.set("min_age", item1.getMinAge()),
                 Updates.set("is_available", item1.isAvailable())
         );
+        sitterMgdMongoCollection.updateOne(filter, update);
     }
 //D
     @Override

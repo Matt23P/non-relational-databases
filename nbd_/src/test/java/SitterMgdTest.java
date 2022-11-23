@@ -22,9 +22,8 @@ public class SitterMgdTest {
         SitterMgd sitterMgd = new SitterMgd("Wojciech", "Kowalski", SitterMgd.SitterType.ACADEMIC, 100, "Maths", 10, true);
         assertNotNull(sitterRepositoryMgd.add(sitterMgd));
 
-        assertEquals(sitterMgd, sitterRepositoryMgd.get(sitterMgd));
         assertEquals(sitterMgd.getEntityId().getUuid(), sitterRepositoryMgd.get(sitterMgd).getEntityId().getUuid());
-        assertEquals(sitterMgd, sitterRepositoryMgd.getByEntityId(sitterMgd.getEntityId()));
+        assertEquals(sitterMgd.getEntityId().getUuid(), sitterRepositoryMgd.getByEntityId(sitterMgd.getEntityId()).getEntityId().getUuid());
         assertEquals(sitterMgd.getFirstName(), sitterRepositoryMgd.get(sitterMgd).getFirstName());
         assertEquals(sitterMgd.getLastName(), sitterRepositoryMgd.get(sitterMgd).getLastName());
         assertEquals(sitterMgd.getSitterType(), sitterRepositoryMgd.get(sitterMgd).getSitterType());
@@ -41,7 +40,6 @@ public class SitterMgdTest {
 
         sitterMgd.setFirstName("Anna");
         sitterMgd.setLastName("Jankowska");
-        sitterMgd.setSitterType(SitterMgd.SitterType.ACADEMIC);
         sitterMgd.setBasePrice(90);
         sitterMgd.setSkill("Cleaning");
         sitterMgd.setMinAge(5);
@@ -49,7 +47,6 @@ public class SitterMgdTest {
 
         assertEquals("Anna", sitterMgd.getFirstName());
         assertEquals("Jankowska", sitterMgd.getLastName());
-        assertEquals(SitterMgd.SitterType.ACADEMIC, sitterMgd.getSitterType());
         assertEquals(90, sitterMgd.getBasePrice());
         assertEquals("Cleaning", sitterMgd.getSkill());
         assertEquals(5, sitterMgd.getMinAge());

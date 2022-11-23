@@ -53,14 +53,13 @@ public class ReservationMgdTest {
         assertNotNull(sitterRepositoryMgd.add(sitterMgd));
         assertNotNull(reservationRepositoryMgd.add(reservationMgd));
 
-        assertEquals(reservationMgd, reservationRepositoryMgd.get(reservationMgd));
         assertEquals(reservationMgd.getEntityId().getUuid(), reservationRepositoryMgd.get(reservationMgd).getEntityId().getUuid());
-        assertEquals(reservationMgd, reservationRepositoryMgd.getByEntityId(reservationMgd.getEntityId()));
+        assertEquals(reservationMgd.getEntityId().getUuid(), reservationRepositoryMgd.getByEntityId(reservationMgd.getEntityId()).getEntityId().getUuid());
         assertEquals(reservationMgd.getDate(), reservationRepositoryMgd.get(reservationMgd).getDate());
         assertEquals(reservationMgd.getStartTime(), reservationRepositoryMgd.get(reservationMgd).getStartTime());
         assertEquals(reservationMgd.getEndTime(), reservationRepositoryMgd.get(reservationMgd).getEndTime());
-        assertEquals(reservationMgd.getParent(), reservationRepositoryMgd.get(reservationMgd).getParent());
-        assertEquals(reservationMgd.getSitter(), reservationRepositoryMgd.get(reservationMgd).getSitter());
+        assertEquals(reservationMgd.getParent().getEntityId().getUuid(), reservationRepositoryMgd.get(reservationMgd).getParent().getEntityId().getUuid());
+        assertEquals(reservationMgd.getSitter().getEntityId().getUuid(), reservationRepositoryMgd.get(reservationMgd).getSitter().getEntityId().getUuid());
 
     }
 

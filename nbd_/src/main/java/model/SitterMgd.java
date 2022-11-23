@@ -47,7 +47,7 @@ public class SitterMgd extends AbstractEntityMgd {
     @BsonProperty("last_name")
     private String lastName;
     @BsonProperty("sitter_type")
-    private SitterType  sitterType;
+    private SitterType sitterType;
     @BsonProperty("base_price")
     private double basePrice;
     @BsonProperty("skill")

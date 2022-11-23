@@ -24,7 +24,6 @@ public class ParentMgdTest {
         ParentMgd parentMgd = new ParentMgd("Mateusz Przybylski", "Lipinki Laczna43", "694202137", 8);
         assertNotNull(parentRepositoryMgd.add(parentMgd));
 
-        assertEquals(parentMgd, parentRepositoryMgd.get(parentMgd));
         assertEquals(parentMgd.getEntityId().getUuid(), parentRepositoryMgd.get(parentMgd).getEntityId().getUuid());
         assertEquals(parentMgd.getName(), parentRepositoryMgd.get(parentMgd).getName());
         assertEquals(parentMgd.getAddress(), parentRepositoryMgd.get(parentMgd).getAddress());
