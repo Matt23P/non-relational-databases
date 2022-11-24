@@ -1,6 +1,6 @@
 package repositories;
 
-public interface Repository <T> {
+public interface Repository <T, id_T> {
 
     T add (T item);
 
