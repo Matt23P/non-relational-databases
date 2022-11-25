@@ -1,5 +1,6 @@
 version: '3.9'
 services:
+
   redis-stack:
     image: redis/redis-stack:latest
     volumes:
@@ -10,64 +11,49 @@ services:
     networks:
       - redisnet
 
+  mongo:
+    build: .
+    image: mongocustom:1
+    container_name: mongodb
+    hostname: mongodb
+    networks:
+      - mongonet
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminp
+    command: --config /etc/mongod.conf
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 20s
+      timeout: 4s
+      retries: 10
+      start_period: 40s
+
+  ##initialize mongo replicaset from another container ???
+  mongoinit:
+    build: .
+    image: mongocustom:1
+    hostname: mongodbinit
+    container_name: mongodbinit
+    networks:
+      - mongonet
+    depends_on:
+      mongo:
+        condition: service_healthy
+    command: >
+      mongosh --host mongodb:27017 --username admin --password adminp --authenticationDatabase admin --eval
+      '
+      rs.initiate();
+      '
+
 volumes:
   redis-stack-data:
     driver: local
 
+
 networks:
   redisnet: {}
+  mongonet: {}
 
-#version: "3.9"
-#
-#services:
-#  redis-cluster_1:
-#    image: docker.io/bitnami/redis-cluster:7.0
-#    ports:
-#      - "7001:7001"
-#      - "17001:17001"
-#    environment:
-#      - REDIS_PORT_NUMBER=7001
-#      - REDIS_PASSWORD=master123
-#      - REDIS_NODES=redis-cluster_1 redis-cluster_2 redis-cluster_3 redis-cluster_4 redis-cluster_5 redis-cluster_6
-#      - REDIS_CLUSTER_ANNOUNCE_PORT=7001
-#      - REDIS_CLUSTER_ANNOUNCE_IP=192.168.1.194
-#      - REDIS_CLUSTER_BUS_ANNOUNCE_PORT_17001
-#      - REDIS_CLUSTER_DYNAMMIC_IPS=no
-#    volumes:
-#      - type: bind
-#        source: ./modules
-#        target: /opt/bitnami/redis/modules
-#      - type: bind
-#        source: ./modules/overrides.conf
-#        target: /opt/bitnami/redis/mounted-etc/overrides.conf
-#    networks:
-#      redisnetwork:
-#        - ipv4_address: 172.27.0.101
-#
-#  redis-cluster-init:
-#    image: docker.io/bitnami/redis-cluster:7.0
-#    container_name: redis-cluster-init
-#    restart: 'no'
-#    depends_on:
-#      - redis-cluster_1
-#      - redis-cluster_2
-#      - redis-cluster_3
-#      - redis-cluster_4
-#      - redis-cluster_5
-#      - redis-cluster_6
-#    entrypoint: []
-#    command:
-#      - /bin/bash
-#      - -c
-#      - redis-cli -a master123 -cluster create 192.168.1.194:7001 192.168.1.194:7002 192.168.1.194:7003 192.168.1.194:7004 192.168.1.194:7005 192.168.1.194:7006 --cluster-replicas 1 --cluster-yes
-#    networks:
-#      redisnetwork:
-#        ipv4_address: 172.27.0.100
-#
-#networks:
-#  redisnetwork:
-#    driver: bridge
-#    ipam:
-#      driver: default
-#      config:
-#        - subnet: 172.27.0.0/16
