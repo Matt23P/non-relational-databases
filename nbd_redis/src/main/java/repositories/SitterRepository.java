@@ -7,7 +7,7 @@ import entity.UniqueId;
 import model.Sitter;
 import org.bson.conversions.Bson;
 
-public class SitterRepository extends AbstractRepository implements Repository<Sitter, Long>{
+public class SitterRepository extends AbstractRepository implements Repository<Sitter>{
     MongoCollection<Sitter> sitterMongoCollection = mongoDatabase.getCollection("sitters", Sitter.class);
 
     //C
@@ -29,7 +29,7 @@ public class SitterRepository extends AbstractRepository implements Repository<S
     }
     //U
     @Override
-    public void update(Sitter item1) {
+    public boolean update(Sitter item1) {
         Bson filter = Filters.eq("_id", item1.getEntityId().getUuid());
         Bson update = Updates.combine(
                 Updates.set("first_name", item1.getFirstName()),
@@ -40,6 +40,7 @@ public class SitterRepository extends AbstractRepository implements Repository<S
                 Updates.set("is_available", item1.isAvailable())
         );
         sitterMongoCollection.updateOne(filter, update);
+        return true;
     }
     //D
     @Override

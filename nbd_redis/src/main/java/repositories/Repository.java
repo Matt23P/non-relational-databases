@@ -1,6 +1,6 @@
 package repositories;
 
-public interface Repository <T, id_T> {
+public interface Repository <T> {
 
     T add (T item);
 
@@ -8,5 +8,5 @@ public interface Repository <T, id_T> {
 
     void remove (T item);
 
-    void update (T item1);
+    boolean update (T item1);
 }

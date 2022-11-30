@@ -7,12 +7,12 @@ import entity.UniqueId;
 import model.Reservation;
 import org.bson.conversions.Bson;
 
-public class ReservationRepository extends AbstractRepository implements Repository<Reservation, Long>{
+public class ReservationRepository extends AbstractRepository implements Repository<Reservation>{
 
     MongoCollection<Reservation> reservationMongoCollection = mongoDatabase.getCollection("reservations", Reservation.class);
     //C
     @Override
-    public Reservation add(Reservation item) {
+    public synchronized Reservation add(Reservation item) {
         reservationMongoCollection.insertOne(item);
         return item;
     }
@@ -29,7 +29,7 @@ public class ReservationRepository extends AbstractRepository implements Reposit
     }
     //U
     @Override
-    public void update(Reservation item1) {
+    public boolean update(Reservation item1) {
         Bson filter = Filters.eq("_id", item1.getEntityId().getUuid());
         Bson update = Updates.combine(
                 Updates.set("date", item1.getDate()),
@@ -39,6 +39,7 @@ public class ReservationRepository extends AbstractRepository implements Reposit
                 Updates.set("sitter", item1.getSitter())
         );
         reservationMongoCollection.updateOne(filter, update);
+        return true;
     }
     //D
     @Override

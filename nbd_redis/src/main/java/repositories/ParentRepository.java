@@ -7,7 +7,7 @@ import entity.UniqueId;
 import model.Parent;
 import org.bson.conversions.Bson;
 
-public class ParentRepository extends AbstractRepository implements Repository<Parent, UniqueId>{
+public class ParentRepository extends AbstractRepository implements Repository<Parent>{
     MongoCollection<Parent> parentMongoCollection = mongoDatabase.getCollection("parents", Parent.class);
     //C
     @Override
@@ -28,7 +28,7 @@ public class ParentRepository extends AbstractRepository implements Repository<P
     }
     //U
     @Override
-    public void update(Parent item1) {
+    public boolean update(Parent item1) {
         Bson filter = Filters.eq("_id", item1.getEntityId().getUuid());
         Bson update = Updates.combine(
                 Updates.set("name", item1.getName()),
@@ -37,6 +37,7 @@ public class ParentRepository extends AbstractRepository implements Repository<P
                 Updates.set("child_age", item1.getChildAge())
         );
         parentMongoCollection.updateOne(filter, update);
+        return true;
     }
     //D
     @Override
