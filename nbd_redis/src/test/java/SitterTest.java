@@ -3,7 +3,8 @@ import model.Sitter;
 import org.junit.Test;
 import repositories.SitterRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 public class SitterTest {
     private static final SitterRepository sitterRepository = new SitterRepository();
     private SitterManager sitterManager = new SitterManager(sitterRepository);
@@ -27,7 +28,7 @@ public class SitterTest {
         assertEquals(sitter.getFirstName(), sitterRepository.get(sitter).getFirstName());
         assertEquals(sitter.getLastName(), sitterRepository.get(sitter).getLastName());
         assertEquals(sitter.getSitterType(), sitterRepository.get(sitter).getSitterType());
-        assertEquals(sitter.getBasePrice(), sitterRepository.get(sitter).getBasePrice());
+        assertEquals(sitter.getBasePrice(), sitterRepository.get(sitter).getBasePrice(), 0.01);
         assertEquals(sitter.getSkill(), sitterRepository.get(sitter).getSkill());
         assertEquals(sitter.getMinAge(), sitterRepository.get(sitter).getMinAge());
 
@@ -47,9 +48,9 @@ public class SitterTest {
 
         assertEquals("Anna", sitter.getFirstName());
         assertEquals("Jankowska", sitter.getLastName());
-        assertEquals(90, sitter.getBasePrice());
+        assertEquals(90, sitter.getBasePrice(), 0.01);
         assertEquals("Cleaning", sitter.getSkill());
-        assertEquals(5, sitter.getMinAge());
+        assertEquals(5, sitter.getMinAge().intValue());
         assertEquals(false, sitter.isAvailable());
 
         sitterRepository.update(sitter);
@@ -59,7 +60,7 @@ public class SitterTest {
         assertEquals(sitter.getFirstName(), sitter_updated.getFirstName());
         assertEquals(sitter.getLastName(), sitter_updated.getLastName());
         assertEquals(sitter.getSitterType(), sitter_updated.getSitterType());
-        assertEquals(sitter.getBasePrice(), sitter_updated.getBasePrice());
+        assertEquals(sitter.getBasePrice(), sitter_updated.getBasePrice(), 0.01);
         assertEquals(sitter.getSkill(), sitter_updated.getSkill());
         assertEquals(sitter.getMinAge(), sitter_updated.getMinAge());
         assertEquals(sitter.isAvailable(), sitter_updated.isAvailable());

@@ -5,7 +5,7 @@ import model.Parent;
 import model.Reservation;
 import model.Sitter;
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
 import redis.clients.jedis.DefaultJedisClientConfig;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisPooled;
@@ -14,8 +14,9 @@ import repositories.ReservationCacheRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RedisTest {
 

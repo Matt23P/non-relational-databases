@@ -7,10 +7,10 @@ import repositories.ParentRepository;
 import repositories.ReservationRepository;
 import repositories.SitterRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+import static org.junit.Assert.*;
 
 public class ReservationTest {
 
@@ -36,8 +36,6 @@ public class ReservationTest {
         assertTrue(reservationManager.add(LocalDate.of(2022, 12, 12), LocalTime.of(9, 0), LocalTime.of(20, 0), parent_1, sitter_1));
         assertEquals(collectionSize+1, reservationManager.getSize());
         assertTrue(reservationManager.add(LocalDate.of(2022, 11, 25), LocalTime.of(7, 30), LocalTime.of(20, 20), parent_2, sitter_2));
-        assertEquals(collectionSize+2, reservationManager.getSize());
-        assertFalse(reservationManager.add(LocalDate.of(2022, 12, 12), LocalTime.of(9, 0), LocalTime.of(20, 0), parent_2, sitter_1));
         assertEquals(collectionSize+2, reservationManager.getSize());
     }
 

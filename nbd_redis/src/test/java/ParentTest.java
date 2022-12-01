@@ -3,7 +3,8 @@ import model.Parent;
 import org.junit.Test;
 import repositories.ParentRepository;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
 
 public class ParentTest {
 
@@ -44,7 +45,7 @@ public class ParentTest {
         assertEquals("Joe Zaza", parent.getName());
         assertEquals("Pabianice Dluga13", parent.getAddress());
         assertEquals("123456789", parent.getPhoneNumber());
-        assertEquals(10, parent.getChildAge());
+        assertEquals(10, parent.getChildAge().intValue());
 
         parentRepository.update(parent);
 
