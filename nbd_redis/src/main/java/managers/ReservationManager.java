@@ -14,12 +14,12 @@ public class ReservationManager {
     public ReservationManager(ReservationRepository reservationRepository){ this.reservationRepository = reservationRepository; }
 
     public boolean add(LocalDate date, LocalTime startTime, LocalTime endTime, Parent parent, Sitter sitter){
-        if(sitter.isAvailable()){
-            sitter.setAvailable(false);
-            Reservation reservation = new Reservation(date, startTime, endTime, parent, sitter);
-            return reservationRepository.add(reservation) != null;
-        }
-        return false;
+        Reservation reservation = new Reservation(date, startTime, endTime, parent, sitter);
+        return reservationRepository.add(reservation) != null;
+    }
+
+    public boolean add(Reservation reservation){
+        return reservationRepository.add(reservation) != null;
     }
 
     public Reservation get(Reservation reservation){ return reservationRepository.get(reservation); }

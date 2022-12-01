@@ -16,7 +16,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import java.util.List;
 
 
-public class AbstractRepository {
+public abstract class AbstractRepository {
     private ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
     private final MongoCredential credential = MongoCredential.createCredential("admin", "admin", "adminp".toCharArray());
     private final CodecRegistry pojoCodecRegistry =
