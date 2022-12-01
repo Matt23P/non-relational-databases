@@ -20,6 +20,7 @@ public class ReservationCacheRepository extends ReservationRepository {
             gson = new GsonBuilder().create();
             JedisClientConfig clientConfig = DefaultJedisClientConfig.builder().socketTimeoutMillis(100).build();
             jedis = new Jedis(new HostAndPort("localhost",6379),clientConfig);
+            pool = new JedisPooled(new HostAndPort("localhost", 6379), clientConfig);
             pool.set("ping","ping");
             connected = true;
         } catch (Exception exception) {
