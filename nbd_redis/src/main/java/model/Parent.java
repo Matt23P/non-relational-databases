@@ -1,28 +1,20 @@
 package model;
 
+import com.datastax.oss.driver.api.mapper.annotations.CqlName;
+import com.datastax.oss.driver.api.mapper.annotations.Entity;
 import entity.AbstractEntity;
 import entity.UniqueId;
-import lombok.Getter;
-import lombok.Setter;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.codecs.pojo.annotations.BsonProperty;
+import lombok.*;
 
 @Getter
 @Setter
+@Data
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity(defaultKeyspace = "sitter")
+@CqlName("parents_id")
 public class Parent extends AbstractEntity {
-    @BsonCreator
-    public Parent(@BsonId UniqueId entityId,
-                     @BsonProperty("name") String name,
-                     @BsonProperty("address") String address,
-                     @BsonProperty("phone_number") String phoneNumber,
-                     @BsonProperty("child_age") Integer childAge) {
-        super(entityId);
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.childAge = childAge;
-    }
 
     public Parent(String name, String address, String phoneNumber, Integer childAge) {
         super(new UniqueId());
@@ -32,12 +24,16 @@ public class Parent extends AbstractEntity {
         this.childAge = childAge;
     }
 
-    @BsonProperty("name")
+    @NonNull
+    @CqlName("name")
     private String name;
-    @BsonProperty("address")
+    @NonNull
+    @CqlName("address")
     private String address;
-    @BsonProperty("phone_number")
+    @NonNull
+    @CqlName("phoneNumber")
     private String phoneNumber;
-    @BsonProperty("child_age")
+    @NonNull
+    @CqlName("childAge")
     private Integer childAge;
 }

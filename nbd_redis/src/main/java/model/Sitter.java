@@ -1,34 +1,24 @@
 package model;
 
+import com.datastax.oss.driver.api.mapper.annotations.CqlName;
+import com.datastax.oss.driver.api.mapper.annotations.Entity;
 import entity.AbstractEntity;
 import entity.UniqueId;
-import lombok.Getter;
-import lombok.Setter;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.codecs.pojo.annotations.BsonProperty;
+import lombok.*;
 
 @Getter
 @Setter
+@Data
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity(defaultKeyspace = "sitter")
+@CqlName("sitters_id")
 public class Sitter extends AbstractEntity {
-    @BsonCreator
-    public Sitter(@BsonId UniqueId entityId,
-                     @BsonProperty("first_name") String firstName,
-                     @BsonProperty("last_name") String lastName,
-                     @BsonProperty("sitter_type") SitterType sitterType,
-                     @BsonProperty("base_price") double basePrice,
-                     @BsonProperty("skill") String skill,
-                     @BsonProperty("min_age") Integer minAge,
-                     @BsonProperty("is_available") boolean available) {
-        super(entityId);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.sitterType = sitterType;
-        this.basePrice = basePrice;
-        this.skill = skill;
-        this.minAge = minAge;
-        this.available = available;
-    }
+
+//    public Sitter() {
+//
+//    }
 
     public Sitter(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge, boolean available) {
         super(new UniqueId());
@@ -41,21 +31,31 @@ public class Sitter extends AbstractEntity {
         this.available = available;
     }
 
-    @BsonProperty("first_name")
+    @NonNull
+    @CqlName("firstName")
     private String firstName;
-    @BsonProperty("last_name")
+    @NonNull
+    @CqlName("lastName")
     private String lastName;
-    @BsonProperty("sitter_type")
+
+    @CqlName("sitterType")
     private SitterType  sitterType;
-    @BsonProperty("base_price")
+    @NonNull
+    @CqlName("basePrice")
     private double basePrice;
-    @BsonProperty("skill")
+    @NonNull
+    @CqlName("skill")
     private String skill;
-    @BsonProperty("min_age")
+    @NonNull
+    @CqlName("minAge")
     private Integer minAge;
-    @BsonProperty("is_available")
+    @NonNull
+    @CqlName("available")
     private boolean available;
 
+    @ToString
+    @RequiredArgsConstructor
+    @NoArgsConstructor
     public enum SitterType{
         ACADEMIC,
         HOUSEKEEPER

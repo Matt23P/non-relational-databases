@@ -1,9 +1,11 @@
 package model;
 
+import com.datastax.oss.driver.api.mapper.annotations.CqlName;
+import com.datastax.oss.driver.api.mapper.annotations.Entity;
+import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
 import entity.UniqueId;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.bson.codecs.pojo.annotations.BsonCreator;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
@@ -13,23 +15,14 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
+@Data
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(defaultKeyspace = "sitter")
+@CqlName("reservations_id")
 public class Reservation extends AbstractEntity {
-    @BsonCreator
-    public Reservation(@BsonId UniqueId entityId,
-                          @BsonProperty("date") LocalDate date,
-                          @BsonProperty("start_hour") LocalTime startTime,
-                          @BsonProperty("end_hour") LocalTime endTime,
-                          @BsonProperty("parent") Parent parent,
-                          @BsonProperty("sitter") Sitter sitter) {
-        super(entityId);
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.parent = parent;
-        this.sitter = sitter;
-        sitter.setAvailable(false);
-    }
-
 
     public Reservation(LocalDate date, LocalTime startTime, LocalTime endTime, Parent parent, Sitter sitter) {
         super(new UniqueId());
@@ -42,14 +35,19 @@ public class Reservation extends AbstractEntity {
     }
 
 
-    @BsonProperty("date")
+    @NonNull
+    @CqlName("date")
     private LocalDate date;
-    @BsonProperty("start_time")
+    @NonNull
+    @CqlName("startTime")
     private LocalTime startTime;
-    @BsonProperty("end_time")
+    @NonNull
+    @CqlName("endTime")
     private LocalTime endTime;
-    @BsonProperty("parent")
+    @NonNull
+    @CqlName("parent")
     private Parent parent;
-    @BsonProperty("sitter")
+    @NonNull
+    @CqlName("sitter")
     private Sitter sitter;
 }
