@@ -6,9 +6,6 @@ import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
 import entity.UniqueId;
 import lombok.*;
-import org.bson.codecs.pojo.annotations.BsonCreator;
-import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.codecs.pojo.annotations.BsonProperty;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
