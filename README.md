@@ -5,9 +5,13 @@
 
 With usage of Java
 
+Branches:
+
 main - MongoDB project
 
-redis branch - project with Redis database
+redis - project with Redis database
 
-ORM branch - Object-Relational Mapping warm-up project with Postgres database
+ORM - Object-Relational Mapping warm-up project with Postgres database
+
+Cassandra - Apache Cassandra column database project
 ### 2022/23
