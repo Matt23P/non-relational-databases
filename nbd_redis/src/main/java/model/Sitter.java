@@ -2,34 +2,29 @@ package model;
 
 import com.datastax.oss.driver.api.mapper.annotations.CqlName;
 import com.datastax.oss.driver.api.mapper.annotations.Entity;
+import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
-import entity.UniqueId;
 import lombok.*;
+
+import java.io.Serializable;
 
 @Getter
 @Setter
 @Data
 @ToString
+@AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Entity(defaultKeyspace = "sitter")
+@EqualsAndHashCode(exclude = {"firstName", "lastName", "basePrice", "skill", "minAge", "available", "sitterType"})
 @CqlName("sitters_id")
+@Entity()
+
 public class Sitter extends AbstractEntity {
 
-//    public Sitter() {
-//
-//    }
-
-    public Sitter(String firstName, String lastName, SitterType sitterType, double basePrice, String skill, Integer minAge, boolean available) {
-        super(new UniqueId());
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.sitterType = sitterType;
-        this.basePrice = basePrice;
-        this.skill = skill;
-        this.minAge = minAge;
-        this.available = available;
-    }
+    @NonNull
+    @PartitionKey
+    @CqlName("sitter_id")
+    private String sitter_id;
 
     @NonNull
     @CqlName("firstName")
@@ -37,9 +32,6 @@ public class Sitter extends AbstractEntity {
     @NonNull
     @CqlName("lastName")
     private String lastName;
-
-    @CqlName("sitterType")
-    private SitterType  sitterType;
     @NonNull
     @CqlName("basePrice")
     private double basePrice;
@@ -56,10 +48,18 @@ public class Sitter extends AbstractEntity {
     @ToString
     @RequiredArgsConstructor
     @NoArgsConstructor
-    public enum SitterType{
+    public enum SitterType implements Serializable {
         ACADEMIC,
-        HOUSEKEEPER
+        HOUSEKEEPER;
+
+        @NonNull
+        @Getter
+        @CqlName("typeInfo")
+        private String typeInfo;
     }
+
+    @CqlName("sitterType")
+    private String sitterType = SitterType.ACADEMIC.typeInfo;
 
     public boolean isAvailable() {
         return available;

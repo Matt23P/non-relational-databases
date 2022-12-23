@@ -4,7 +4,6 @@ import com.datastax.oss.driver.api.mapper.annotations.CqlName;
 import com.datastax.oss.driver.api.mapper.annotations.Entity;
 import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
-import entity.UniqueId;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -17,20 +16,21 @@ import java.time.LocalTime;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(defaultKeyspace = "sitter")
+@EqualsAndHashCode(exclude = {"parent_id", "sitter_id", "date", "startTime", "endTime"})
+@Entity
 @CqlName("reservations_id")
 public class Reservation extends AbstractEntity {
+    @NonNull
+    @PartitionKey
+    @CqlName("reservation_id")
+    private String reservation_id;
 
-    public Reservation(LocalDate date, LocalTime startTime, LocalTime endTime, Parent parent, Sitter sitter) {
-        super(new UniqueId());
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.parent = parent;
-        this.sitter = sitter;
-        sitter.setAvailable(false);
-    }
-
+    @NonNull
+    @CqlName("parent_id")
+    private String parent;
+    @NonNull
+    @CqlName("sitter_id")
+    private String sitter;
 
     @NonNull
     @CqlName("date")
@@ -41,10 +41,5 @@ public class Reservation extends AbstractEntity {
     @NonNull
     @CqlName("endTime")
     private LocalTime endTime;
-    @NonNull
-    @CqlName("parent")
-    private Parent parent;
-    @NonNull
-    @CqlName("sitter")
-    private Sitter sitter;
+
 }

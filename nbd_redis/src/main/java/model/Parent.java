@@ -2,28 +2,26 @@ package model;
 
 import com.datastax.oss.driver.api.mapper.annotations.CqlName;
 import com.datastax.oss.driver.api.mapper.annotations.Entity;
+import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
-import entity.UniqueId;
 import lombok.*;
 
 @Getter
 @Setter
 @Data
 @ToString
+@AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Entity(defaultKeyspace = "sitter")
+@EqualsAndHashCode(exclude = {"name", "address", "phoneNumber", "childAge"})
 @CqlName("parents_id")
+@Entity
 public class Parent extends AbstractEntity {
 
-    public Parent(String name, String address, String phoneNumber, Integer childAge) {
-        super(new UniqueId());
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.childAge = childAge;
-    }
-
+    @NonNull
+    @PartitionKey
+    @CqlName("parent_id")
+    private String client_id;
     @NonNull
     @CqlName("name")
     private String name;
