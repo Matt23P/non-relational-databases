@@ -6,7 +6,7 @@ import com.datastax.oss.driver.api.mapper.annotations.Insert;
 import com.datastax.oss.driver.api.mapper.annotations.Update;
 import model.Reservation;
 
-import java.sql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
 
 public interface ReservationDao {
 

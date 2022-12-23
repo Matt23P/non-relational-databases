@@ -3,7 +3,7 @@ package dao;
 import com.datastax.oss.driver.api.mapper.annotations.*;
 import model.Parent;
 
-import java.sql.ResultSet;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
 
 @Dao
 public interface ParentDao {

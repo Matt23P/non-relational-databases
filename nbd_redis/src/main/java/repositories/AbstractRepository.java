@@ -1,68 +1,88 @@
 package repositories;
 
 
-import java.net.InetSocketAddress;
-
-import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.CqlSession;
-import com.datastax.oss.driver.api.core.cql.SimpleStatement;
-import com.datastax.oss.driver.api.core.type.DataTypes;
-import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
-import com.datastax.oss.driver.api.querybuilder.schema.CreateKeyspace;
+import dao.ParentDao;
+import dao.ReservationDao;
+import dao.SitterDao;
+import mappers.ParentMapper;
+import mappers.ReservationMapper;
+import mappers.SitterMapper;
+import model.Parent;
+import model.Reservation;
+import model.Sitter;
+import com.datastax.oss.driver.api.core.cql.Row;
 
-import static com.datastax.oss.driver.api.querybuilder.SchemaBuilder.createKeyspace;
-import static entity.CassandraNamespaces.*;
+import com.datastax.oss.driver.api.core.cql.ResultSet;
 
-public abstract class AbstractRepository {
-    private static CqlSession session;
-
-    public void initSession() {
-        session = CqlSession.builder().addContactPoint(new InetSocketAddress("cassandra1", 9042))
-                .addContactPoint(new InetSocketAddress("cassandra2", 9043))
-                .withLocalDatacenter("dc1")
-                .withAuthCredentials("cassandra", "cassandrapassword")
-                .withKeyspace(CqlIdentifier.fromCql("sitter"))
-                .build();
-
-        CreateKeyspace keyspace = createKeyspace(SITTER_NAMESPACE)
-                .ifNotExists()
-                .withSimpleStrategy(2)
-                .withDurableWrites(true);
-        SimpleStatement createKeyspace = keyspace.build();
-        session.execute(createKeyspace);
-
-        SimpleStatement createParents = SchemaBuilder.createTable(PARENT_ID)
-                .ifNotExists()
-                .withPartitionKey(CqlIdentifier.fromCql("ID"), DataTypes.UUID)
-                .withColumn(CqlIdentifier.fromCql("name"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("address"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("phoneNumber"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("childAge"), DataTypes.INT)
-                .build();
-        session.execute(createParents);
-
-        SimpleStatement createSitters = SchemaBuilder.createTable(SITTER_ID)
-                .ifNotExists()
-                .withPartitionKey(CqlIdentifier.fromCql("ID"), DataTypes.UUID)
-                .withColumn(CqlIdentifier.fromCql("firstName"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("lastName"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("sitterType"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("basePrice"), DataTypes.DOUBLE)
-                .withColumn(CqlIdentifier.fromCql("skill"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("minAge"), DataTypes.INT)
-                .withColumn(CqlIdentifier.fromCql("available"), DataTypes.BOOLEAN)
-                .build();
-        session.execute(createSitters);
-
-        SimpleStatement createReservations = SchemaBuilder.createTable(RESERVATION_ID)
-                .ifNotExists()
-                .withPartitionKey(CqlIdentifier.fromCql("ID"), DataTypes.UUID)
-                .withColumn(CqlIdentifier.fromCql("date"), DataTypes.DATE)
-                .withColumn(CqlIdentifier.fromCql("startTime"), DataTypes.TIME)
-                .withColumn(CqlIdentifier.fromCql("endTime"), DataTypes.TIME)
-                .withColumn(CqlIdentifier.fromCql("parent"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("sitter"), DataTypes.TEXT)
-                .build();
-        session.execute(createReservations);
+public abstract class AbstractRepository implements ParentDao, SitterDao, ReservationDao {
+    protected CqlSession session;
+    protected ParentMapper parentMapper;
+    protected ParentDao parentDao;
+    protected SitterMapper sitterMapper;
+    protected SitterDao sitterDao;
+    protected ReservationMapper reservationMapper;
+    protected ReservationDao reservationDao;
+//PARENT
+    @Override
+    public void createParent(Parent parent) {
+        parentDao.createParent(parent);
     }
+
+    @Override
+    public Parent readParent(ResultSet resultSet) {
+        return parentDao.readParent(resultSet);
+    }
+
+    @Override
+    public void updateParent(Parent parent) {
+        parentDao.updateParent(parent);
+    }
+
+    @Override
+    public void deleteParent(Parent parent) {
+        parentDao.deleteParent(parent);
+    }
+//SITTER
+    @Override
+    public void createSitter(Sitter sitter) {
+        sitterDao.createSitter(sitter);
+    }
+
+    @Override
+    public Sitter readSitter(ResultSet resultSet) {
+        return sitterDao.readSitter(resultSet);
+    }
+
+    @Override
+    public void updateSitter(Sitter sitter) {
+        sitterDao.updateSitter(sitter);
+    }
+
+    @Override
+    public void deleteSitter(Sitter sitter) {
+        sitterDao.deleteSitter(sitter);
+    }
+//RESERVATION
+    @Override
+    public void createReservation(Reservation reservation) {
+        reservationDao.createReservation(reservation);
+    }
+
+    @Override
+    public Reservation readReservation(ResultSet resultSet) {
+        return reservationDao.readReservation(resultSet);
+    }
+
+    @Override
+    public void updateReservation(Reservation reservation) {
+        reservationDao.updateReservation(reservation);
+    }
+
+    @Override
+    public void deleteReservation(Reservation reservation) {
+        reservationDao.deleteReservation(reservation);
+    }
+
+    protected  abstract T rowToEntity(Row row);
 }
