@@ -23,6 +23,16 @@ public abstract class AbstractRepository implements ParentDao, SitterDao, Reserv
     protected SitterDao sitterDao;
     protected ReservationMapper reservationMapper;
     protected ReservationDao reservationDao;
+
+    public AbstractRepository(CqlSession session) {
+        this.session = session;
+        this.parentMapper = new ParentMapperBuilder(session).build();
+        this.sitterMapper = new SitterMapperBuilder(session).build();
+        this.reservationMapper = new ReservationMapperBuilder(session).build();
+        this.sitterDao = sitterMapper.sitterDao();
+        this.parentDao = parentMapper.parentDao();
+        this.reservationDao = reservationMapper.reservationDao();
+    }
 //PARENT
     @Override
     public void createParent(Parent parent) {
