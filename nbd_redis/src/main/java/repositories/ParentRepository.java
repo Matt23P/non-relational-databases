@@ -1,52 +1,19 @@
 package repositories;
 
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
-import entity.UniqueId;
+
+import com.datastax.oss.driver.api.core.CqlSession;
+import com.datastax.oss.driver.api.core.cql.Row;
 import model.Parent;
-import org.bson.conversions.Bson;
 
-public class ParentRepository extends AbstractRepository implements Repository<Parent>{
-    MongoCollection<Parent> parentMongoCollection = mongoDatabase.getCollection("parents", Parent.class);
-    //C
-    @Override
-    public Parent add(Parent item) {
-        parentMongoCollection.insertOne(item);
-        return item;
-    }
-    //R
-    @Override
-    public Parent get(Parent item) {
-        Bson filter = Filters.eq("_id", item.getEntityId().getUuid());
-        return parentMongoCollection.find(filter).first();
+public class ParentRepository extends AbstractRepository<Parent> implements Repository<Parent>{
+    public ParentRepository(CqlSession session) {
+        super(session);
     }
 
-    public Parent getByEntityId(UniqueId entityId){
-        Bson filter = Filters.eq("_id", entityId.getUuid());
-        return parentMongoCollection.find(filter).first();
-    }
-    //U
     @Override
-    public boolean update(Parent item1) {
-        Bson filter = Filters.eq("_id", item1.getEntityId().getUuid());
-        Bson update = Updates.combine(
-                Updates.set("name", item1.getName()),
-                Updates.set("address", item1.getAddress()),
-                Updates.set("phone_number", item1.getPhoneNumber()),
-                Updates.set("child_age", item1.getChildAge())
-        );
-        parentMongoCollection.updateOne(filter, update);
-        return true;
-    }
-    //D
-    @Override
-    public void remove(Parent item) {
-        Bson filter = Filters.eq("_id", item.getEntityId().getUuid());
-        parentMongoCollection.findOneAndDelete(filter);
+    protected Parent rowToEntity(Row row){
+        return
+
     }
 
-    public long getCollectionSize() {
-        return parentMongoCollection.countDocuments();
-    }
 }
