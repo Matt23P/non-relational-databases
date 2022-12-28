@@ -15,7 +15,7 @@ import com.datastax.oss.driver.api.core.cql.Row;
 
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 
-public abstract class AbstractRepository implements ParentDao, SitterDao, ReservationDao {
+public abstract class AbstractRepository<T> implements ParentDao, SitterDao, ReservationDao {
     protected CqlSession session;
     protected ParentMapper parentMapper;
     protected ParentDao parentDao;

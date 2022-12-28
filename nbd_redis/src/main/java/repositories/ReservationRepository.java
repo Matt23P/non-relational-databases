@@ -7,7 +7,7 @@ import entity.UniqueId;
 import model.Reservation;
 import org.bson.conversions.Bson;
 
-public class ReservationRepository extends AbstractRepository implements Repository<Reservation>{
+public class ReservationRepository extends AbstractRepository<Reservation> implements Repository<Reservation>{
 
 
 }
