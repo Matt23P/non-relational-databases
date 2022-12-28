@@ -1,30 +1,27 @@
 package managers;
 
-import entity.UniqueId;
+
 import model.Sitter;
 import repositories.SitterRepository;
 
 public class SitterManager {
     SitterRepository sitterRepository;
 
-    public SitterManager(SitterRepository sitterRepository){ this.sitterRepository = sitterRepository; }
-    //C
-    public boolean add(String firstName, String lastName, Sitter.SitterType sitterType, double basePrice, String skill, Integer minAge, boolean isAvailable){
-        Sitter sitter = new Sitter(firstName, lastName, sitterType, basePrice, skill, minAge, isAvailable);
-        return sitterRepository.add(sitter) != null;
+    public SitterManager(SitterRepository sitterRepository) {
+        this.sitterRepository = sitterRepository
     }
-    //R
-    public Sitter get(Sitter sitter){ return sitterRepository.get(sitter); }
 
-    public Sitter get(UniqueId entityId){ return sitterRepository.getByEntityId(entityId); }
-    //U
-    public void update(Sitter sitter){ sitterRepository.update(sitter); }
-    //D
-    public void remove(Sitter sitter){ sitterRepository.remove(sitter); }
+    public boolean add(String sitter_id, String firstName, String lastName, double basePrice, String skill, Integer minAge, boolean available, String sitterType) {
+        Sitter sitter = new Sitter(sitter_id, firstName, lastName, basePrice, skill, minAge, available, sitterType);
+        sitterRepository.add(sitter);
+        return true;
+    }
 
-    public long getSize(){ return sitterRepository.getCollectionSize(); }
+    public void remove(Sitter sitter) {
+        sitterRepository.remove(sitter);
+    }
 
-    public void setAvailable(Sitter sitter, boolean available) { sitterRepository.setAvailable(sitter, available); }
-
-    public boolean getIsAvailable(Sitter sitter){ return sitterRepository.getAvailable(sitter); }
+    public Sitter get(Sitter sitter) {
+        return sitterRepository.get(sitter);
+    }
 }
