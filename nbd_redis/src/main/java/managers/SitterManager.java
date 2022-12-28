@@ -8,7 +8,7 @@ public class SitterManager {
     SitterRepository sitterRepository;
 
     public SitterManager(SitterRepository sitterRepository) {
-        this.sitterRepository = sitterRepository
+        this.sitterRepository = sitterRepository;
     }
 
     public boolean add(String sitter_id, String firstName, String lastName, double basePrice, String skill, Integer minAge, boolean available, String sitterType) {
