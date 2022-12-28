@@ -10,25 +10,23 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class ReservationManager {
-    ReservationRepository reservationRepository;
-    public ReservationManager(ReservationRepository reservationRepository){ this.reservationRepository = reservationRepository; }
+   ReservationRepository reservationRepository;
 
-    public boolean add(LocalDate date, LocalTime startTime, LocalTime endTime, Parent parent, Sitter sitter){
-        Reservation reservation = new Reservation(date, startTime, endTime, parent, sitter);
-        return reservationRepository.add(reservation) != null;
-    }
+   public ReservationManager(ReservationRepository reservationRepository) {
+       this.reservationRepository = reservationRepository;
+   }
 
-    public boolean add(Reservation reservation){
-        return reservationRepository.add(reservation) != null;
-    }
+   public boolean add(String reservation_id, String parent_id, String sitter_id, LocalDate date, LocalTime startTime, LocalTime endTime) {
+       Reservation reservation = new Reservation(reservation_id, parent_id, sitter_id, date, startTime, endTime);
+       reservationRepository.add(reservation);
+       return true;
+   }
 
-    public Reservation get(Reservation reservation){ return reservationRepository.get(reservation); }
+   public void remove(Reservation reservation) {
+       reservationRepository.remove(reservation);
+   }
 
-    public Reservation get(UniqueId entityId){ return reservationRepository.getByEntityId(entityId); }
-
-    public void update(Reservation reservation){ reservationRepository.update(reservation); }
-
-    public void remove(Reservation reservation){ reservationRepository.remove(reservation); }
-
-    public long getSize(){ return reservationRepository.getCollectionSize(); }
+   public Reservation get(Reservation reservation) {
+       return reservationRepository.get(reservation);
+   }
 }
