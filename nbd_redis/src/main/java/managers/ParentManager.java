@@ -1,9 +1,6 @@
 package managers;
 
-
-import entity.UniqueId;
 import model.Parent;
-import model.Sitter;
 import repositories.ParentRepository;
 
 public class ParentManager {

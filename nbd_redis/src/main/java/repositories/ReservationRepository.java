@@ -7,19 +7,13 @@ import com.datastax.oss.driver.api.core.cql.Row;
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 import com.datastax.oss.driver.api.querybuilder.relation.Relation;
 import com.datastax.oss.driver.api.querybuilder.select.Select;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import entity.CassandraNamespaces;
-import entity.UniqueId;
 import model.Reservation;
-import model.Sitter;
-import org.bson.conversions.Bson;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.bindMarker;
 
 public class ReservationRepository extends AbstractRepository<Reservation> implements Repository<Reservation> {
 
@@ -42,7 +36,7 @@ public class ReservationRepository extends AbstractRepository<Reservation> imple
     @Override
     public Reservation get(Object element) {
         Select getReservationByID = QueryBuilder.selectFrom(CassandraNamespaces.RESERVATIONS_ID).all()
-                .where(Relation.column("reservation_id").isEqualTo(bindMaker()));
+                .where(Relation.column("reservation_id").isEqualTo(bindMarker()));
         PreparedStatement preparedStatement = session.prepare(getReservationByID.build());
         return Optional.ofNullable(readReservation((ResultSet) session.execute(preparedStatement.bind(element)))).orElseThrow();
     }
@@ -65,7 +59,7 @@ public class ReservationRepository extends AbstractRepository<Reservation> imple
     @Override
     public List<Reservation> find(Object... elements) {
         Select getReservationByID = QueryBuilder.selectFrom(CassandraNamespaces.RESERVATIONS_ID).all();
-        Stream.of(elements).forEach(element -> getReservationByID.where(Relation.column("reservation_id").isEqualTo(bindMaker())));
+        Stream.of(elements).forEach(element -> getReservationByID.where(Relation.column("reservation_id").isEqualTo(bindMarker())));
         PreparedStatement preparedStatement = session.prepare(getReservationByID.build());
         return session.execute(preparedStatement.bind(elements)).all().stream().map(this::rowToEntity).collect(Collectors.toList());
     }

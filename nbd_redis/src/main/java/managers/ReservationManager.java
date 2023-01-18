@@ -1,9 +1,6 @@
 package managers;
 
-import entity.UniqueId;
-import model.Parent;
 import model.Reservation;
-import model.Sitter;
 import repositories.ReservationRepository;
 
 import java.time.LocalDate;

@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"firstName", "lastName", "basePrice", "skill", "minAge", "available", "sitterType"}, callSuper = false)
 @CqlName("sitters_id")
-@Entity()
+@Entity
 
 public class Sitter extends AbstractEntity {
 

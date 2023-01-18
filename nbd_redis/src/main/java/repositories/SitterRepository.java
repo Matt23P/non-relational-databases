@@ -7,18 +7,14 @@ import com.datastax.oss.driver.api.core.cql.Row;
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder;
 import com.datastax.oss.driver.api.querybuilder.relation.Relation;
 import com.datastax.oss.driver.api.querybuilder.select.Select;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 import entity.CassandraNamespaces;
-import entity.UniqueId;
 import model.Sitter;
-import org.bson.conversions.Bson;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.bindMarker;
+
 
 public class SitterRepository extends AbstractRepository<Sitter> implements Repository<Sitter> {
     public SitterRepository(CqlSession session) {
@@ -40,7 +36,7 @@ public class SitterRepository extends AbstractRepository<Sitter> implements Repo
     @Override
     public Sitter get(Object element) {
         Select getSitterByID = QueryBuilder.selectFrom(CassandraNamespaces.SITTERS_ID).all()
-                .where(Relation.column("sitter_id").isEqualTo(bindMaker()));
+                .where(Relation.column("sitter_id").isEqualTo(bindMarker()));
         PreparedStatement preparedStatement = session.prepare(getSitterByID.build());
         return Optional.ofNullable(readSitter((ResultSet) session.execute(preparedStatement.bind(element)))).orElseThrow();
     }
@@ -63,7 +59,7 @@ public class SitterRepository extends AbstractRepository<Sitter> implements Repo
     @Override
     public List<Sitter> find(Object... elements) {
         Select getSitterByID = QueryBuilder.selectFrom(CassandraNamespaces.SITTERS_ID).all();
-        Stream.of(elements).forEach(element -> getSitterByID.where(Relation.column("sitter_id").isEqualTo(bindMaker())));
+        Stream.of(elements).forEach(element -> getSitterByID.where(Relation.column("sitter_id").isEqualTo(bindMarker())));
         PreparedStatement preparedStatement = session.prepare(getSitterByID.build());
         return session.execute(preparedStatement.bind(elements)).all().stream().map(this::rowToEntity).collect(Collectors.toList());
     }
