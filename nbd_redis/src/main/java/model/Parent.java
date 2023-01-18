@@ -10,8 +10,9 @@ import lombok.*;
 @Setter
 @Data
 @ToString
+@AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @EqualsAndHashCode(exclude = {"name", "address", "phoneNumber", "childAge"}, callSuper = false)
 @CqlName("parents_id")
 @Entity

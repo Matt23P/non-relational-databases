@@ -13,8 +13,9 @@ import java.time.LocalTime;
 @Setter
 @Data
 @ToString
+@AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @EqualsAndHashCode(exclude = {"parent_id", "sitter_id", "date", "startTime", "endTime"}, callSuper = false)
 @Entity
 @CqlName("reservations_id")

@@ -32,7 +32,7 @@ public class Sitter extends AbstractEntity {
     @NonNull
     @CqlName("lastName")
     private String lastName;
-    @NonNull
+
     @CqlName("basePrice")
     private double basePrice;
     @NonNull
@@ -41,7 +41,7 @@ public class Sitter extends AbstractEntity {
     @NonNull
     @CqlName("minAge")
     private Integer minAge;
-    @NonNull
+
     @CqlName("available")
     private boolean available;
 
