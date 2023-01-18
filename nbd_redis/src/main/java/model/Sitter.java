@@ -15,7 +15,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"firstName", "lastName", "basePrice", "skill", "minAge", "available", "sitterType"})
+@EqualsAndHashCode(exclude = {"firstName", "lastName", "basePrice", "skill", "minAge", "available", "sitterType"}, callSuper = false)
 @CqlName("sitters_id")
 @Entity()
 

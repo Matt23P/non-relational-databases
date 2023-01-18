@@ -14,7 +14,7 @@ import static com.datastax.oss.driver.api.querybuilder.SchemaBuilder.createKeysp
 public class SitterDBManager {
     private static CqlSession session;
     public static CqlSession initSession() {
-        CqlSession session = CqlSession.builder()
+        session = CqlSession.builder()
                 .addContactPoint(new InetSocketAddress("localhost", 9042))
                 .addContactPoint(new InetSocketAddress("localhost", 9043))
                 .withLocalDatacenter("dc1")

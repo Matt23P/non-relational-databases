@@ -15,8 +15,7 @@ import java.time.LocalTime;
 @ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(exclude = {"parent_id", "sitter_id", "date", "startTime", "endTime"})
+@EqualsAndHashCode(exclude = {"parent_id", "sitter_id", "date", "startTime", "endTime"}, callSuper = false)
 @Entity
 @CqlName("reservations_id")
 public class Reservation extends AbstractEntity {
@@ -27,10 +26,10 @@ public class Reservation extends AbstractEntity {
 
     @NonNull
     @CqlName("parent_id")
-    private String parent;
+    private String parent_id;
     @NonNull
     @CqlName("sitter_id")
-    private String sitter;
+    private String sitter_id;
 
     @NonNull
     @CqlName("date")

@@ -10,10 +10,9 @@ import lombok.*;
 @Setter
 @Data
 @ToString
-@AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"name", "address", "phoneNumber", "childAge"})
+@EqualsAndHashCode(exclude = {"name", "address", "phoneNumber", "childAge"}, callSuper = false)
 @CqlName("parents_id")
 @Entity
 public class Parent extends AbstractEntity {
@@ -21,7 +20,7 @@ public class Parent extends AbstractEntity {
     @NonNull
     @PartitionKey
     @CqlName("parent_id")
-    private String client_id;
+    private String parent_id;
     @NonNull
     @CqlName("name")
     private String name;
