@@ -18,7 +18,7 @@ public class SitterDBManager {
                 .addContactPoint(new InetSocketAddress("localhost", 9042))
                 .addContactPoint(new InetSocketAddress("localhost", 9043))
                 .withLocalDatacenter("dc1")
-                .withAuthCredentials("cassandra", "cassanrapassword")
+                .withAuthCredentials("cassandra", "cassandrapassword")
                 .withKeyspace(CqlIdentifier.fromCql("sitter"))
                 .build();
 

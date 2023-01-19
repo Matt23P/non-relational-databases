@@ -48,6 +48,12 @@
       <groupId>com.datastax.oss</groupId>
       <artifactId>java-driver-core</artifactId>
       <version>4.15.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.datastax.oss</groupId>
@@ -87,6 +93,11 @@
       <groupId>jakarta.persistence</groupId>
       <artifactId>jakarta.persistence-api</artifactId>
       <version>3.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.9</version>
     </dependency>
   </dependencies>
 

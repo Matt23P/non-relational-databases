@@ -15,7 +15,7 @@ services:
       - CASSANDRA_LISTEN_ADDRESS=cassandra1
       - CASSANDRA_BROADCAST_ADDRESS=cassandra1
       - CASSANDRA_SEEDS=cassandra1,cassandra2
-      - CASSANDRA_CLUSTER_NAME=nbd-cassandra-cluster
+      - CASSANDRA_CLUSTER_NAME=nbd_cassandra_cluster
       - CASSANDRA_DATACENTER=dc1
       - CASSANDRA_PASSWORD_SEEDER=yes
       - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
