@@ -4,15 +4,7 @@ import com.datastax.oss.driver.api.mapper.annotations.CqlName;
 import com.datastax.oss.driver.api.mapper.annotations.Entity;
 import com.datastax.oss.driver.api.mapper.annotations.PartitionKey;
 import entity.AbstractEntity;
-//import lombok.*;
 
-//@Getter
-//@Setter
-//@Data
-//@ToString
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@EqualsAndHashCode(exclude = {"name", "address", "phoneNumber", "childAge"}, callSuper = false)
 @CqlName("parents_id")
 @Entity
 public class Parent extends AbstractEntity {
