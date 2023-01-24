@@ -18,7 +18,7 @@ public class CassandraNamespaces {
         public static final CqlIdentifier LASTNAME  = CqlIdentifier.fromCql("lastName");
         public static final CqlIdentifier BASEPRICE = CqlIdentifier.fromCql("basePrice");
         public static final CqlIdentifier SKILL = CqlIdentifier.fromCql("skill");
-        public static final CqlIdentifier MINAGE = CqlIdentifier.fromInternal("minAge");
+        public static final CqlIdentifier MINAGE = CqlIdentifier.fromCql("minAge");
         public static final CqlIdentifier AVAILABLE = CqlIdentifier.fromCql("available");
         public static final CqlIdentifier SITTERTYPE = CqlIdentifier.fromCql("sitterType");
 

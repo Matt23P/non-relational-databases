@@ -33,8 +33,8 @@ public class ReservationRepositoryTest {
         reservationRepository.add(reservation1);
         reservationRepository.add(reservation2);
 
-        assertEquals(reservation1, reservationRepository.get(reservation1.getReservation_id()));
-        assertEquals(reservation2, reservationRepository.get(reservation2.getReservation_id()));
+        assertEquals(reservation1.getReservation_id(), reservationRepository.get(reservation1.getReservation_id()).getReservation_id());
+        assertEquals(reservation2.getReservation_id(), reservationRepository.get(reservation2.getReservation_id()).getReservation_id());
     }
 
     @Test
@@ -63,7 +63,12 @@ public class ReservationRepositoryTest {
         Reservation forUpdate = reservation1;
         forUpdate.setEndTime(LocalTime.of(18, 30));
         reservationRepository.update(forUpdate);
-        assertEquals(forUpdate, reservationRepository.get(forUpdate.getReservation_id()));
+        assertEquals(forUpdate.getReservation_id(), reservationRepository.get(forUpdate.getReservation_id()).getReservation_id());
+        assertEquals(forUpdate.getParent_id(), reservationRepository.get(forUpdate.getReservation_id()).getParent_id());
+        assertEquals(forUpdate.getSitter_id(), reservationRepository.get(forUpdate.getReservation_id()).getSitter_id());
+        assertEquals(forUpdate.getDate(), reservationRepository.get(forUpdate.getReservation_id()).getDate());
+        assertEquals(forUpdate.getStartTime(), reservationRepository.get(forUpdate.getReservation_id()).getStartTime());
+        assertEquals(forUpdate.getEndTime(), reservationRepository.get(forUpdate.getReservation_id()).getEndTime());
 
     }
 

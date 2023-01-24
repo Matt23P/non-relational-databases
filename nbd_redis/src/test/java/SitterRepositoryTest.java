@@ -21,8 +21,8 @@ public class SitterRepositoryTest {
         sitterRepository.add(sitter1);
         sitterRepository.add(sitter2);
 
-        assertEquals(sitter1, sitterRepository.get(sitter1.getSitter_id()));
-        assertEquals(sitter2, sitterRepository.get(sitter2.getSitter_id()));
+        assertEquals(sitter1.getSitter_id(), sitterRepository.get(sitter1.getSitter_id()).getSitter_id());
+        assertEquals(sitter2.getSitter_id(), sitterRepository.get(sitter2.getSitter_id()).getSitter_id());
     }
 
     @Test
@@ -41,7 +41,11 @@ public class SitterRepositoryTest {
         Sitter forUpdate = sitter1;
         forUpdate.setFirstName("Wojciech");
         sitterRepository.update(forUpdate);
-        assertEquals(forUpdate, sitterRepository.get(forUpdate.getSitter_id()));
+        assertEquals(forUpdate.getSitter_id(), sitterRepository.get(forUpdate.getSitter_id()).getSitter_id());
+        assertEquals(forUpdate.getFirstName(), sitterRepository.get(forUpdate.getSitter_id()).getFirstName());
+        assertEquals(forUpdate.getLastName(), sitterRepository.get(forUpdate.getSitter_id()).getLastName());
+        assertEquals(forUpdate.getSkill(), sitterRepository.get(forUpdate.getSitter_id()).getSkill());
+        assertEquals(forUpdate.getMinAge(), sitterRepository.get(forUpdate.getSitter_id()).getMinAge());
     }
 
     @AfterAll

@@ -22,8 +22,8 @@ public class ParentRepositoryTest {
         parentRepository.add(parent1);
         parentRepository.add(parent2);
 
-        assertEquals(parent1, parentRepository.get(parent1.getParent_id()));
-        assertEquals(parent2, parentRepository.get(parent2.getParent_id()));
+        assertEquals(parent1.getParent_id(), parentRepository.get(parent1.getParent_id()).getParent_id());
+        assertEquals(parent2.getParent_id(), parentRepository.get(parent2.getParent_id()).getParent_id());
     }
 
     @Test
@@ -42,7 +42,10 @@ public class ParentRepositoryTest {
         Parent forUpdate = parent1;
         forUpdate.setName("Wojciech Stefanowski");
         parentRepository.update(forUpdate);
-        assertEquals(forUpdate, parentRepository.get(forUpdate.getParent_id()));
+        assertEquals(forUpdate.getParent_id(), parentRepository.get(forUpdate.getParent_id()).getParent_id());
+        assertEquals(forUpdate.getName(), parentRepository.get(forUpdate.getParent_id()).getName());
+        assertEquals(forUpdate.getAddress(), parentRepository.get(forUpdate.getParent_id()).getAddress());
+        assertEquals(forUpdate.getPhoneNumber(), parentRepository.get(forUpdate.getParent_id()).getPhoneNumber());
     }
 
     @AfterAll

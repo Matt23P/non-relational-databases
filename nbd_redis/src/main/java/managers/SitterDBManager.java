@@ -46,7 +46,7 @@ public class SitterDBManager {
                 .withColumn(CqlIdentifier.fromCql("lastName"), DataTypes.TEXT)
                 .withColumn(CqlIdentifier.fromCql("basePrice"), DataTypes.DOUBLE)
                 .withColumn(CqlIdentifier.fromCql("skill"), DataTypes.TEXT)
-                .withColumn(CqlIdentifier.fromCql("minAge"), DataTypes.TEXT)
+                .withColumn(CqlIdentifier.fromCql("minAge"), DataTypes.INT)
                 .withColumn(CqlIdentifier.fromCql("available"), DataTypes.BOOLEAN)
                 .withColumn(CqlIdentifier.fromCql("sitterType"), DataTypes.TEXT)
                 .build();
