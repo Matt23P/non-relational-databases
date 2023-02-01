@@ -1,6 +1,5 @@
 package model;
 
-import entity.AbstractEntity;
 import entity.UniqueId;
 import lombok.Getter;
 import lombok.Setter;

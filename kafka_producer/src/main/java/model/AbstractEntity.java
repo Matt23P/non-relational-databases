@@ -1,5 +1,6 @@
-package entity;
+package model;
 
+import entity.UniqueId;
 import org.bson.codecs.pojo.annotations.BsonId;
 
 import java.io.Serializable;

@@ -27,12 +27,6 @@
       <version>4.13.2</version>
       <scope>compile</scope>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>org.junit.platform</groupId>-->
-    <!--      <artifactId>junit-platform-suite-api</artifactId>-->
-    <!--      <version>1.9.0</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
     <dependency>
       <groupId>redis.clients</groupId>
       <artifactId>jedis</artifactId>
@@ -43,23 +37,30 @@
       <artifactId>yasson</artifactId>
       <version>3.0.1</version>
     </dependency>
-
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver-sync</artifactId>
       <version>${mongodb-driver-sync.version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-crypt</artifactId>
       <version>${mongodb-crypt.version}</version>
     </dependency>
-
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
       <version>1.7.36</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>7.0.1-ccs</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
     </dependency>
   </dependencies>
 
