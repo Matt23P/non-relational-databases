@@ -10,9 +10,11 @@ import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.JedisPooled;
 import repositories.ReservationCacheRepository;
 import repositories.ReservationRepository;
-import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CacheTest {
     private static final ReservationRepository reservationCache = new ReservationCacheRepository();
