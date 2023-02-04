@@ -9,7 +9,7 @@ import org.bson.conversions.Bson;
 
 public class ReservationRepository extends AbstractRepository implements Repository<Reservation>{
 
-    MongoCollection<Reservation> reservationMongoCollection = mongoDatabase.getCollection("reservations", Reservation.class);
+    MongoCollection<Reservation> reservationMongoCollection = mongoDatabase.getCollection("consumer", Reservation.class);
     //C
     @Override
     public synchronized Reservation add(Reservation item) {
