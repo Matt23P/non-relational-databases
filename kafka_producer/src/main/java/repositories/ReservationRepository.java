@@ -3,6 +3,7 @@ package repositories;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import entity.ReservationProducer;
 import entity.UniqueId;
 import model.Reservation;
 import org.bson.conversions.Bson;
@@ -10,6 +11,7 @@ import org.bson.conversions.Bson;
 public class ReservationRepository extends AbstractRepository implements Repository<Reservation>{
 
     MongoCollection<Reservation> reservationMongoCollection = mongoDatabase.getCollection("reservations", Reservation.class);
+    ReservationProducer reservationProducer = new ReservationProducer();
     //C
     @Override
     public synchronized Reservation add(Reservation item) {

@@ -2,6 +2,7 @@ package repositories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entity.ReservationProducer;
 import entity.UniqueId;
 import model.Reservation;
 import redis.clients.jedis.*;
@@ -14,6 +15,7 @@ public class ReservationCacheRepository extends ReservationRepository {
     private Gson gson;
     private long lastCheck;
     private boolean connected;
+    private ReservationProducer reservationProducer = new ReservationProducer();
 
     public ReservationCacheRepository() {
         try {
@@ -56,6 +58,7 @@ public class ReservationCacheRepository extends ReservationRepository {
         if(connected){
             try {
                 addToCache(reservation);
+                reservationProducer.produceReservation(reservation);
             }
             catch (Exception exception){
                 jedisConnectionExceptionHandler(exception);
