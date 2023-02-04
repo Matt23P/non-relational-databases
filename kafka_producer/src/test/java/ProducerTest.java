@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
-public class ConsumerTest {
+public class ProducerTest {
 
     protected DefaultJedisClientConfig jedisClientConfig = DefaultJedisClientConfig.builder().build();
     protected JedisPooled RedisClient;
