@@ -53,7 +53,6 @@ public class SitterTest {
 
         sitter.setFirstName("Marek");
         sitter.setLastName("Buch");
-        sitter.setSitterType(Sitter.SitterType.HOUSEKEEPER);
         sitter.setBasePrice(24);
         sitter.setSkill("Biologia");
         sitter.setMinAge(9);
@@ -63,7 +62,6 @@ public class SitterTest {
         Sitter updated = sitterRepository.getByEntityId(sitter.getEntityId());
         assertEquals(sitter.getFirstName(), updated.getFirstName());
         assertEquals(sitter.getLastName(), updated.getLastName());
-        assertEquals(sitter.getSitterType(), updated.getSitterType());
         assertEquals(sitter.getBasePrice(), updated.getBasePrice());
         assertEquals(sitter.getSkill(), updated.getSkill());
         assertEquals(sitter.getMinAge(), updated.getMinAge());

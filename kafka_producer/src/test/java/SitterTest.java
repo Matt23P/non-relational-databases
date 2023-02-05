@@ -53,7 +53,6 @@ public class SitterTest {
 
         sitter.setFirstName("Marek");
         sitter.setLastName("Buch");
-        sitter.setSitterType(Sitter.SitterType.HOUSEKEEPER);
         sitter.setBasePrice(24);
         sitter.setSkill("Biologia");
         sitter.setMinAge(9);
