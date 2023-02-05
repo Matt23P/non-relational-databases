@@ -17,7 +17,7 @@ import java.time.LocalTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CacheTest {
-    private static final ReservationRepository reservationCache = new ReservationCacheRepository();
+    private static final ReservationCacheRepository reservationCache = new ReservationCacheRepository();
     private static final ReservationManager reservationCacheManager = new ReservationManager(reservationCache);
 
     protected DefaultJedisClientConfig defaultJedisClientConfig = DefaultJedisClientConfig.builder().build();
