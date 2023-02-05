@@ -14,7 +14,7 @@ public class ReservationRepository extends AbstractRepository implements Reposit
     ReservationProducer reservationProducer = new ReservationProducer();
     //C
     @Override
-    public synchronized Reservation add(Reservation item) {
+    public Reservation add(Reservation item) {
         reservationMongoCollection.insertOne(item);
         return item;
     }
